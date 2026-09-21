@@ -1,0 +1,12 @@
+[project]
+name = "construction-cv"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Gleb Gonchar", email = "gelerum@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "dvc[s3]>=3.67.1",
+]
