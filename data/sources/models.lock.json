@@ -1,0 +1,161 @@
+{
+  "sitesense": {
+    "repo": "Zaafan/sitesense-weights",
+    "revision": "fbd10046b21165dde1579346c0d2c5ab00b61caa",
+    "files": {
+      "README.md": {
+        "sha256": "b8bfb4c6dc76ac179455e68155ebdedb8f20338564ea1ddc5e3966d857ebc36c",
+        "bytes": 6617,
+        "url": "https://huggingface.co/Zaafan/sitesense-weights/resolve/fbd10046b21165dde1579346c0d2c5ab00b61caa/README.md"
+      },
+      "yolo26l_construction_v1.pt": {
+        "sha256": "ce1fb6dfb686709724eb354313a62d5661d371dc34712034e9cf0adc636af12f",
+        "bytes": 52990373,
+        "url": "https://huggingface.co/Zaafan/sitesense-weights/resolve/fbd10046b21165dde1579346c0d2c5ab00b61caa/yolo26l_construction_v1.pt"
+      }
+    }
+  },
+  "grounding-dino-tiny": {
+    "repo": "IDEA-Research/grounding-dino-tiny",
+    "revision": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+    "files": {
+      "README.md": {
+        "sha256": "cf46f74c7b6850f1d5cbe406028324d8798148726016d46a69a365b4a2d3e89f",
+        "bytes": 2580,
+        "url": "https://huggingface.co/IDEA-Research/grounding-dino-tiny/resolve/a2bb814dd30d776dcf7e30523b00659f4f141c71/README.md"
+      },
+      "added_tokens.json": {
+        "sha256": "909e96cb32d92ce728a01bc99850cbba26196d74115c17ebeb019275412588f2",
+        "bytes": 82,
+        "url": "https://huggingface.co/IDEA-Research/grounding-dino-tiny/resolve/a2bb814dd30d776dcf7e30523b00659f4f141c71/added_tokens.json"
+      },
+      "config.json": {
+        "sha256": "eec82c5ab66e16df12a9a212e68ac011779927c2536cf9078658e35d85f0c67a",
+        "bytes": 1644,
+        "url": "https://huggingface.co/IDEA-Research/grounding-dino-tiny/resolve/a2bb814dd30d776dcf7e30523b00659f4f141c71/config.json"
+      },
+      "model.safetensors": {
+        "sha256": "1a2412ef99bd74bcd3c2a246fa1e48581f8889a1300c9051974741314fc042f3",
+        "bytes": 689359096,
+        "url": "https://huggingface.co/IDEA-Research/grounding-dino-tiny/resolve/a2bb814dd30d776dcf7e30523b00659f4f141c71/model.safetensors"
+      },
+      "preprocessor_config.json": {
+        "sha256": "8454179ba95e2ad22947835aad7b45862a601fc0055ab88bf1ee70892d3aea60",
+        "bytes": 457,
+        "url": "https://huggingface.co/IDEA-Research/grounding-dino-tiny/resolve/a2bb814dd30d776dcf7e30523b00659f4f141c71/preprocessor_config.json"
+      },
+      "special_tokens_map.json": {
+        "sha256": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "bytes": 125,
+        "url": "https://huggingface.co/IDEA-Research/grounding-dino-tiny/resolve/a2bb814dd30d776dcf7e30523b00659f4f141c71/special_tokens_map.json"
+      },
+      "tokenizer.json": {
+        "sha256": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66",
+        "bytes": 711396,
+        "url": "https://huggingface.co/IDEA-Research/grounding-dino-tiny/resolve/a2bb814dd30d776dcf7e30523b00659f4f141c71/tokenizer.json"
+      },
+      "tokenizer_config.json": {
+        "sha256": "d40ab645b68211910b9170d22433d43186a6ec8ee6fd10ba170524b25bf4fb56",
+        "bytes": 1237,
+        "url": "https://huggingface.co/IDEA-Research/grounding-dino-tiny/resolve/a2bb814dd30d776dcf7e30523b00659f4f141c71/tokenizer_config.json"
+      },
+      "vocab.txt": {
+        "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+        "bytes": 231508,
+        "url": "https://huggingface.co/IDEA-Research/grounding-dino-tiny/resolve/a2bb814dd30d776dcf7e30523b00659f4f141c71/vocab.txt"
+      }
+    }
+  },
+  "grounding-dino-base": {
+    "repo": "IDEA-Research/grounding-dino-base",
+    "revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb",
+    "files": {
+      "README.md": {
+        "sha256": "a0d03193076262a585dcb1edfe4b3b72fac678055008b688feb188cceb7f977d",
+        "bytes": 2580,
+        "url": "https://huggingface.co/IDEA-Research/grounding-dino-base/resolve/12bdfa3120f3e7ec7b434d90674b3396eccf88eb/README.md"
+      },
+      "config.json": {
+        "sha256": "eda416dae6f49419ff831b1c190ec430a060b19aae688dbaf2425a075b650608",
+        "bytes": 1737,
+        "url": "https://huggingface.co/IDEA-Research/grounding-dino-base/resolve/12bdfa3120f3e7ec7b434d90674b3396eccf88eb/config.json"
+      },
+      "model.safetensors": {
+        "sha256": "5548f844c928c4b6f411fa8cbcc2bfa8dbbba437cb1d513975519f93c2a9ed21",
+        "bytes": 933400872,
+        "url": "https://huggingface.co/IDEA-Research/grounding-dino-base/resolve/12bdfa3120f3e7ec7b434d90674b3396eccf88eb/model.safetensors"
+      },
+      "preprocessor_config.json": {
+        "sha256": "8454179ba95e2ad22947835aad7b45862a601fc0055ab88bf1ee70892d3aea60",
+        "bytes": 457,
+        "url": "https://huggingface.co/IDEA-Research/grounding-dino-base/resolve/12bdfa3120f3e7ec7b434d90674b3396eccf88eb/preprocessor_config.json"
+      },
+      "special_tokens_map.json": {
+        "sha256": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "bytes": 125,
+        "url": "https://huggingface.co/IDEA-Research/grounding-dino-base/resolve/12bdfa3120f3e7ec7b434d90674b3396eccf88eb/special_tokens_map.json"
+      },
+      "tokenizer.json": {
+        "sha256": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66",
+        "bytes": 711396,
+        "url": "https://huggingface.co/IDEA-Research/grounding-dino-base/resolve/12bdfa3120f3e7ec7b434d90674b3396eccf88eb/tokenizer.json"
+      },
+      "tokenizer_config.json": {
+        "sha256": "d40ab645b68211910b9170d22433d43186a6ec8ee6fd10ba170524b25bf4fb56",
+        "bytes": 1237,
+        "url": "https://huggingface.co/IDEA-Research/grounding-dino-base/resolve/12bdfa3120f3e7ec7b434d90674b3396eccf88eb/tokenizer_config.json"
+      },
+      "vocab.txt": {
+        "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+        "bytes": 231508,
+        "url": "https://huggingface.co/IDEA-Research/grounding-dino-base/resolve/12bdfa3120f3e7ec7b434d90674b3396eccf88eb/vocab.txt"
+      }
+    }
+  },
+  "clip-vit-large-patch14": {
+    "repo": "openai/clip-vit-large-patch14",
+    "revision": "32bd64288804d66eefd0ccbe215aa642df71cc41",
+    "files": {
+      "config.json": {
+        "sha256": "8a09b467700c58138c29d53c605b34ebc69beaadd13274a8a2af8ad2c2f4032a",
+        "bytes": 4519,
+        "url": "https://huggingface.co/openai/clip-vit-large-patch14/resolve/32bd64288804d66eefd0ccbe215aa642df71cc41/config.json"
+      },
+      "merges.txt": {
+        "sha256": "9fd691f7c8039210e0fced15865466c65820d09b63988b0174bfe25de299051a",
+        "bytes": 524619,
+        "url": "https://huggingface.co/openai/clip-vit-large-patch14/resolve/32bd64288804d66eefd0ccbe215aa642df71cc41/merges.txt"
+      },
+      "model.safetensors": {
+        "sha256": "a2bf730a0c7debf160f7a6b50b3aaf3703e7e88ac73de7a314903141db026dcb",
+        "bytes": 1710540580,
+        "url": "https://huggingface.co/openai/clip-vit-large-patch14/resolve/32bd64288804d66eefd0ccbe215aa642df71cc41/model.safetensors"
+      },
+      "preprocessor_config.json": {
+        "sha256": "910e70b3956ac9879ebc90b22fb3bc8a75b6a0677814500101a4c072bd7857bd",
+        "bytes": 316,
+        "url": "https://huggingface.co/openai/clip-vit-large-patch14/resolve/32bd64288804d66eefd0ccbe215aa642df71cc41/preprocessor_config.json"
+      },
+      "special_tokens_map.json": {
+        "sha256": "f8c0d6c39aee3f8431078ef6646567b0aba7f2246e9c54b8b99d55c22b707cbf",
+        "bytes": 389,
+        "url": "https://huggingface.co/openai/clip-vit-large-patch14/resolve/32bd64288804d66eefd0ccbe215aa642df71cc41/special_tokens_map.json"
+      },
+      "tokenizer.json": {
+        "sha256": "a83e0809aa4c3af7208b2df632a7a69668c6d48775b3c3fe4e1b1199d1f8b8f4",
+        "bytes": 2224003,
+        "url": "https://huggingface.co/openai/clip-vit-large-patch14/resolve/32bd64288804d66eefd0ccbe215aa642df71cc41/tokenizer.json"
+      },
+      "tokenizer_config.json": {
+        "sha256": "deef455e52fa5e8151e339add0582e4235f066009601360999d3a9cda83b1129",
+        "bytes": 905,
+        "url": "https://huggingface.co/openai/clip-vit-large-patch14/resolve/32bd64288804d66eefd0ccbe215aa642df71cc41/tokenizer_config.json"
+      },
+      "vocab.json": {
+        "sha256": "3f0c4f7d2086b61b38487075278ea9ed04edb53a03cbb045b86c27190fa8fb69",
+        "bytes": 961143,
+        "url": "https://huggingface.co/openai/clip-vit-large-patch14/resolve/32bd64288804d66eefd0ccbe215aa642df71cc41/vocab.json"
+      }
+    }
+  }
+}

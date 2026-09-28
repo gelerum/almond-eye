@@ -12,10 +12,15 @@ from pathlib import Path
 
 from PIL import Image
 
-from backend.app.domain.contracts import Detection, Equipment, ModelDetection
+from backend.app.domain.contracts import Detection, Equipment, Material, MaterialDetection, ModelDetection
 
 HAZARD_LABELS = {"Hardhat", "Mask", "NO-Hardhat", "NO-Mask", "NO-Safety Vest",
                  "Person", "Safety Cone", "Safety Vest", "machinery", "utility pole", "vehicle"}
+def torch_device():
+    """Устройство inference: cpu (по умолчанию), 0 / cuda:0 для GPU."""
+    return os.getenv("TORCH_DEVICE", "cpu")
+
+
 HAZARD_MODEL = Path(__file__).resolve().parents[3] / "runtime/models/construction-hazard/yolo11n.pt"
 
 
@@ -30,6 +35,8 @@ class DetectionBatch:
     detections: list[Detection]
     detection_confidence_floor: float = 0
     model_detections: list[ModelDetection] = field(default_factory=list)
+    materials: list[MaterialDetection] = field(default_factory=list)
+    material_coverage: dict[Material, float] = field(default_factory=dict)
 
 
 class UltralyticsDetector:
@@ -68,7 +75,7 @@ class UltralyticsDetector:
                 weights_hash = hashlib.file_digest(stream, "sha256").hexdigest()
         except Exception as exc:
             raise DetectorUnavailable(f"Не удалось загрузить детектор: {exc}") from exc
-        self.inference_config = {"device":"cpu", "conf":0.01, "iou":0.7, "imgsz":640, "max_det":300}
+        self.inference_config = {"device":torch_device(), "conf":0.01, "iou":0.7, "imgsz":640, "max_det":300}
         if profile == "construction-hazard":
             self.inference_config["conf"] = 0.25
         identity = {"weights_sha256":weights_hash, "class_map":self.class_map,

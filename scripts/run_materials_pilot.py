@@ -9,6 +9,8 @@ import threading
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from backend.app.paths import dataset_image  # noqa: E402
 WORK = ROOT / 'runtime/experiments/materials-20260928'
 DATA = ROOT / 'data/experiments/materials-20260928'
 sys.path.insert(0, str(WORK / 'packages'))
@@ -121,7 +123,7 @@ def main():
             result['stopped_reason'] = 'less than 1.5 GiB available RAM'
             save()
             break
-        path = ROOT / row['image']
+        path = dataset_image(row['image'])
         if sha(path) != row['sha256']:
             raise ValueError(f'Input changed: {path}')
         with Image.open(path) as source:

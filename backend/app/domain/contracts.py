@@ -20,10 +20,36 @@ class Equipment(StrEnum):
     bulldozer = "bulldozer"
     truck = "truck"
     mobile_crane = "mobile_crane"
+    # Beyond the ТЗ list: needed to tell piling, crane and frame stages apart on real sites.
+    tower_crane = "tower_crane"
+    crawler_crane = "crawler_crane"
+    drilling_rig = "drilling_rig"
+    wheel_loader = "wheel_loader"
+    concrete_pump = "concrete_pump"
 
 
 LABELS = dict(zip(Equipment, ["Самосвал", "Экскаватор", "Каток", "Кран-манипулятор",
-                             "Бетоносмеситель", "Бульдозер", "Грузовик", "Автокран"]))
+                             "Бетоносмеситель", "Бульдозер", "Грузовик", "Автокран",
+                             "Башенный кран", "Гусеничный кран", "Буровая / сваебойная установка",
+                             "Погрузчик (фронтальный, экскаватор-погрузчик)", "Автобетононасос"]))
+# Classes named in the ТЗ; the rest are an extension.
+TZ_EQUIPMENT = list(Equipment)[:8]
+
+
+class Material(StrEnum):
+    rebar = "rebar"
+    formwork = "formwork"
+    scaffolding = "scaffolding"
+    pipes = "pipes"
+    precast_slabs = "precast_slabs"
+    brickwork = "brickwork"
+    concrete = "concrete"
+    steel = "steel"
+    metal_deck = "metal_deck"
+
+
+MATERIAL_LABELS = dict(zip(Material, ["Арматура", "Опалубка", "Леса", "Трубы / шпунт", "Ж/б плиты",
+                                      "Кирпичная кладка", "Бетон", "Металлоконструкции", "Профнастил"]))
 
 
 class Stage(Contract):
@@ -140,10 +166,17 @@ class BoundingBoxDetection(Contract):
 
 class ModelDetection(BoundingBoxDetection):
     label: str = Field(min_length=1, max_length=200)
+    source: str | None = None
 
 
 class Detection(BoundingBoxDetection):
     equipment: Equipment
+    sources: list[str] = Field(default_factory=list)
+
+
+class MaterialDetection(BoundingBoxDetection):
+    material: Material
+    sources: list[str] = Field(default_factory=list)
 
 
 class Zone(Contract):
@@ -196,6 +229,9 @@ class Observation(Contract):
     supported_classes: list[Equipment] = Field(default_factory=list)
     detections: list[Detection] = Field(default_factory=list)
     model_detections: list[ModelDetection] = Field(default_factory=list)
+    materials: list[MaterialDetection] = Field(default_factory=list)
+    # Share of the frame covered by a material (segmentation models), 0..1.
+    material_coverage: dict[Material, float] = Field(default_factory=dict)
     model_version: str
     mode: Literal["fixture", "model"]
     detection_confidence_floor: float = Field(default=0, ge=0, le=1)

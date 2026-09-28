@@ -1,0 +1,2005 @@
+{
+ "_comment": "Демо-данные для ?mock=1 по контракту /status из docs/ARCHITECTURE.md §8",
+ "projects": [
+  {
+   "id": "mock-b",
+   "name": "Площадка B (демо)",
+   "timezone": "Europe/Moscow"
+  },
+  {
+   "id": "mock-empty",
+   "name": "Пустая площадка (демо)",
+   "timezone": "Europe/Moscow"
+  }
+ ],
+ "status": {
+  "project_id": "mock-b",
+  "plan_id": "plan-mock-1",
+  "date": "2024-06-25",
+  "verdict": {
+   "status": "behind",
+   "delay_days": 25,
+   "summary": "Отстаём на 25 дней: разработка котлована затянулась (последнее наблюдение 25.06, план до 31.05)."
+  },
+  "stages": [
+   {
+    "stage_key": "site_preparation",
+    "name": "Подготовка территории",
+    "planned_start": "2024-03-01",
+    "planned_end": "2024-03-20",
+    "planned_state": "should_be_done",
+    "observed_first": "2024-03-05",
+    "observed_last": "2024-03-18",
+    "observations": 3,
+    "status": "on_track",
+    "delay_days": 0,
+    "explanation": "Этап завершён по плану; последнее наблюдение 18.03."
+   },
+   {
+    "stage_key": "piling",
+    "name": "Шпунтовое ограждение и сваи",
+    "planned_start": "2024-03-15",
+    "planned_end": "2024-04-15",
+    "planned_state": "should_be_done",
+    "observed_first": "2024-03-20",
+    "observed_last": "2024-04-12",
+    "observations": 4,
+    "status": "on_track",
+    "delay_days": 0,
+    "explanation": "Буровая установка видна 20.03–12.04, в пределах плана."
+   },
+   {
+    "stage_key": "excavation",
+    "name": "Разработка котлована",
+    "planned_start": "2024-04-01",
+    "planned_end": "2024-05-31",
+    "planned_state": "should_be_done",
+    "observed_first": "2024-04-18",
+    "observed_last": "2024-06-25",
+    "observations": 8,
+    "status": "behind",
+    "delay_days": 25,
+    "explanation": "Экскаватор и самосвалы видны до 25.06, план до 31.05."
+   },
+   {
+    "stage_key": "foundation",
+    "name": "Фундаментная плита",
+    "planned_start": "2024-05-20",
+    "planned_end": "2024-07-10",
+    "planned_state": "should_be_active",
+    "observed_first": "2024-06-07",
+    "observed_last": "2024-06-21",
+    "observations": 3,
+    "status": "behind",
+    "delay_days": 9,
+    "explanation": "Старт задерживается: арматура и опалубка на снимках только с 07.06."
+   },
+   {
+    "stage_key": "underground",
+    "name": "Подземная часть",
+    "planned_start": "2024-07-01",
+    "planned_end": "2024-08-31",
+    "planned_state": "not_started",
+    "observed_first": null,
+    "observed_last": null,
+    "observations": 0,
+    "status": "no_data",
+    "delay_days": 0,
+    "explanation": "По плану ещё не начат."
+   },
+   {
+    "stage_key": "tower_crane_install",
+    "name": "Монтаж башенного крана",
+    "planned_start": "2024-06-10",
+    "planned_end": "2024-06-20",
+    "planned_state": "should_be_done",
+    "observed_first": null,
+    "observed_last": null,
+    "observations": 0,
+    "status": "at_risk",
+    "delay_days": 0,
+    "explanation": "Башенный кран не виден на свежих снимках; автокран без самосвалов."
+   },
+   {
+    "stage_key": "superstructure",
+    "name": "Надземная часть",
+    "planned_start": "2024-09-01",
+    "planned_end": "2024-12-20",
+    "planned_state": "not_started",
+    "observed_first": null,
+    "observed_last": null,
+    "observations": 0,
+    "status": "no_data",
+    "delay_days": 0,
+    "explanation": "По плану ещё не начат."
+   },
+   {
+    "stage_key": "utilities",
+    "name": "Наружные сети",
+    "planned_start": "2024-05-01",
+    "planned_end": "2024-05-25",
+    "planned_state": "should_be_done",
+    "observed_first": "2024-04-25",
+    "observed_last": "2024-05-17",
+    "observations": 2,
+    "status": "ahead",
+    "delay_days": 6,
+    "explanation": "Трубы видны с 25.04, раньше плана."
+   }
+  ],
+  "observations": [
+   {
+    "image_id": "img-001",
+    "captured_at": "2024-03-05",
+    "top_stage": "site_preparation",
+    "top_score": 0.64,
+    "stages": [
+     {
+      "stage_key": "site_preparation",
+      "score": 0.64
+     },
+     {
+      "stage_key": "piling",
+      "score": 0.24
+     },
+     {
+      "stage_key": "excavation",
+      "score": 0.09
+     }
+    ],
+    "equipment": {
+     "bulldozer": 1,
+     "dump_truck": 1
+    },
+    "materials": {},
+    "image_url": "/assets/mock-photo.svg",
+    "analysis_id": "an-001"
+   },
+   {
+    "image_id": "img-002",
+    "captured_at": "2024-03-12",
+    "top_stage": "site_preparation",
+    "top_score": 0.86,
+    "stages": [
+     {
+      "stage_key": "site_preparation",
+      "score": 0.86
+     },
+     {
+      "stage_key": "excavation",
+      "score": 0.43
+     },
+     {
+      "stage_key": "piling",
+      "score": 0.06
+     }
+    ],
+    "equipment": {
+     "bulldozer": 1,
+     "dump_truck": 1
+    },
+    "materials": {},
+    "image_url": "/assets/mock-photo.svg",
+    "analysis_id": "an-002"
+   },
+   {
+    "image_id": "img-003",
+    "captured_at": "2024-03-18",
+    "top_stage": "site_preparation",
+    "top_score": 0.69,
+    "stages": [
+     {
+      "stage_key": "site_preparation",
+      "score": 0.69
+     },
+     {
+      "stage_key": "excavation",
+      "score": 0.25
+     },
+     {
+      "stage_key": "piling",
+      "score": 0.12
+     }
+    ],
+    "equipment": {
+     "bulldozer": 1,
+     "dump_truck": 1
+    },
+    "materials": {},
+    "image_url": "/assets/mock-photo.svg",
+    "analysis_id": "an-003"
+   },
+   {
+    "image_id": "img-004",
+    "captured_at": "2024-03-20",
+    "top_stage": "piling",
+    "top_score": 0.88,
+    "stages": [
+     {
+      "stage_key": "piling",
+      "score": 0.88
+     },
+     {
+      "stage_key": "site_preparation",
+      "score": 0.22
+     },
+     {
+      "stage_key": "excavation",
+      "score": 0.17
+     }
+    ],
+    "equipment": {
+     "drilling_rig": 1,
+     "mobile_crane": 1
+    },
+    "materials": {
+     "pipes": 0.1
+    },
+    "image_url": "/assets/mock-photo.svg",
+    "analysis_id": "an-004"
+   },
+   {
+    "image_id": "img-005",
+    "captured_at": "2024-03-28",
+    "top_stage": "piling",
+    "top_score": 0.81,
+    "stages": [
+     {
+      "stage_key": "piling",
+      "score": 0.81
+     },
+     {
+      "stage_key": "excavation",
+      "score": 0.42
+     },
+     {
+      "stage_key": "site_preparation",
+      "score": 0.08
+     }
+    ],
+    "equipment": {
+     "drilling_rig": 1,
+     "mobile_crane": 1
+    },
+    "materials": {
+     "pipes": 0.1
+    },
+    "image_url": "/assets/mock-photo.svg",
+    "analysis_id": "an-005"
+   },
+   {
+    "image_id": "img-006",
+    "captured_at": "2024-04-05",
+    "top_stage": "piling",
+    "top_score": 0.81,
+    "stages": [
+     {
+      "stage_key": "piling",
+      "score": 0.81
+     },
+     {
+      "stage_key": "site_preparation",
+      "score": 0.42
+     },
+     {
+      "stage_key": "excavation",
+      "score": 0.1
+     }
+    ],
+    "equipment": {
+     "drilling_rig": 1,
+     "mobile_crane": 1
+    },
+    "materials": {
+     "pipes": 0.1
+    },
+    "image_url": "/assets/mock-photo.svg",
+    "analysis_id": "an-006"
+   },
+   {
+    "image_id": "img-007",
+    "captured_at": "2024-04-12",
+    "top_stage": "piling",
+    "top_score": 0.67,
+    "stages": [
+     {
+      "stage_key": "piling",
+      "score": 0.67
+     },
+     {
+      "stage_key": "excavation",
+      "score": 0.4
+     },
+     {
+      "stage_key": "site_preparation",
+      "score": 0.39
+     }
+    ],
+    "equipment": {
+     "drilling_rig": 1,
+     "mobile_crane": 1
+    },
+    "materials": {
+     "pipes": 0.1
+    },
+    "image_url": "/assets/mock-photo.svg",
+    "analysis_id": "an-007"
+   },
+   {
+    "image_id": "img-008",
+    "captured_at": "2024-04-18",
+    "top_stage": "excavation",
+    "top_score": 0.68,
+    "stages": [
+     {
+      "stage_key": "excavation",
+      "score": 0.68
+     },
+     {
+      "stage_key": "site_preparation",
+      "score": 0.37
+     },
+     {
+      "stage_key": "piling",
+      "score": 0.2
+     }
+    ],
+    "equipment": {
+     "excavator": 2,
+     "dump_truck": 1
+    },
+    "materials": {},
+    "image_url": "/assets/mock-photo.svg",
+    "analysis_id": "an-008"
+   },
+   {
+    "image_id": "img-009",
+    "captured_at": "2024-04-25",
+    "top_stage": "utilities",
+    "top_score": 0.77,
+    "stages": [
+     {
+      "stage_key": "utilities",
+      "score": 0.77
+     },
+     {
+      "stage_key": "site_preparation",
+      "score": 0.26
+     },
+     {
+      "stage_key": "piling",
+      "score": 0.1
+     }
+    ],
+    "equipment": {
+     "excavator": 1,
+     "truck": 1
+    },
+    "materials": {
+     "pipes": 0.05
+    },
+    "image_url": "/assets/mock-photo.svg",
+    "analysis_id": "an-009"
+   },
+   {
+    "image_id": "img-010",
+    "captured_at": "2024-05-02",
+    "top_stage": "excavation",
+    "top_score": 0.88,
+    "stages": [
+     {
+      "stage_key": "excavation",
+      "score": 0.88
+     },
+     {
+      "stage_key": "site_preparation",
+      "score": 0.13
+     },
+     {
+      "stage_key": "piling",
+      "score": 0.06
+     }
+    ],
+    "equipment": {
+     "excavator": 2,
+     "dump_truck": 1
+    },
+    "materials": {},
+    "image_url": "/assets/mock-photo.svg",
+    "analysis_id": "an-010"
+   },
+   {
+    "image_id": "img-011",
+    "captured_at": "2024-05-10",
+    "top_stage": "excavation",
+    "top_score": 0.87,
+    "stages": [
+     {
+      "stage_key": "excavation",
+      "score": 0.87
+     },
+     {
+      "stage_key": "piling",
+      "score": 0.22
+     },
+     {
+      "stage_key": "site_preparation",
+      "score": 0.2
+     }
+    ],
+    "equipment": {
+     "excavator": 2,
+     "dump_truck": 1
+    },
+    "materials": {},
+    "image_url": "/assets/mock-photo.svg",
+    "analysis_id": "an-011"
+   },
+   {
+    "image_id": "img-012",
+    "captured_at": "2024-05-17",
+    "top_stage": "utilities",
+    "top_score": 0.68,
+    "stages": [
+     {
+      "stage_key": "utilities",
+      "score": 0.68
+     },
+     {
+      "stage_key": "site_preparation",
+      "score": 0.44
+     },
+     {
+      "stage_key": "piling",
+      "score": 0.08
+     }
+    ],
+    "equipment": {
+     "excavator": 1,
+     "truck": 1
+    },
+    "materials": {
+     "pipes": 0.05
+    },
+    "image_url": "/assets/mock-photo.svg",
+    "analysis_id": "an-012"
+   },
+   {
+    "image_id": "img-013",
+    "captured_at": "2024-05-27",
+    "top_stage": "excavation",
+    "top_score": 0.79,
+    "stages": [
+     {
+      "stage_key": "excavation",
+      "score": 0.79
+     },
+     {
+      "stage_key": "piling",
+      "score": 0.42
+     },
+     {
+      "stage_key": "site_preparation",
+      "score": 0.14
+     }
+    ],
+    "equipment": {
+     "excavator": 2,
+     "dump_truck": 1
+    },
+    "materials": {},
+    "image_url": "/assets/mock-photo.svg",
+    "analysis_id": "an-013"
+   },
+   {
+    "image_id": "img-014",
+    "captured_at": "2024-06-03",
+    "top_stage": "excavation",
+    "top_score": 0.67,
+    "stages": [
+     {
+      "stage_key": "excavation",
+      "score": 0.67
+     },
+     {
+      "stage_key": "piling",
+      "score": 0.06
+     },
+     {
+      "stage_key": "site_preparation",
+      "score": 0.06
+     }
+    ],
+    "equipment": {
+     "excavator": 2,
+     "dump_truck": 1
+    },
+    "materials": {},
+    "image_url": "/assets/mock-photo.svg",
+    "analysis_id": "an-014"
+   },
+   {
+    "image_id": "img-015",
+    "captured_at": "2024-06-07",
+    "top_stage": "foundation",
+    "top_score": 0.75,
+    "stages": [
+     {
+      "stage_key": "foundation",
+      "score": 0.75
+     },
+     {
+      "stage_key": "piling",
+      "score": 0.36
+     },
+     {
+      "stage_key": "site_preparation",
+      "score": 0.17
+     }
+    ],
+    "equipment": {
+     "concrete_mixer": 1
+    },
+    "materials": {
+     "rebar": 0.18,
+     "formwork": 0.07
+    },
+    "image_url": "/assets/mock-photo.svg",
+    "analysis_id": "an-015"
+   },
+   {
+    "image_id": "img-016",
+    "captured_at": "2024-06-10",
+    "top_stage": "excavation",
+    "top_score": 0.88,
+    "stages": [
+     {
+      "stage_key": "excavation",
+      "score": 0.88
+     },
+     {
+      "stage_key": "piling",
+      "score": 0.39
+     },
+     {
+      "stage_key": "site_preparation",
+      "score": 0.36
+     }
+    ],
+    "equipment": {
+     "excavator": 2,
+     "dump_truck": 1
+    },
+    "materials": {},
+    "image_url": "/assets/mock-photo.svg",
+    "analysis_id": "an-016"
+   },
+   {
+    "image_id": "img-017",
+    "captured_at": "2024-06-14",
+    "top_stage": "foundation",
+    "top_score": 0.68,
+    "stages": [
+     {
+      "stage_key": "foundation",
+      "score": 0.68
+     },
+     {
+      "stage_key": "piling",
+      "score": 0.17
+     },
+     {
+      "stage_key": "site_preparation",
+      "score": 0.05
+     }
+    ],
+    "equipment": {
+     "concrete_mixer": 1
+    },
+    "materials": {
+     "rebar": 0.18,
+     "formwork": 0.07
+    },
+    "image_url": "/assets/mock-photo.svg",
+    "analysis_id": "an-017"
+   },
+   {
+    "image_id": "img-018",
+    "captured_at": "2024-06-18",
+    "top_stage": "excavation",
+    "top_score": 0.86,
+    "stages": [
+     {
+      "stage_key": "excavation",
+      "score": 0.86
+     },
+     {
+      "stage_key": "site_preparation",
+      "score": 0.44
+     },
+     {
+      "stage_key": "piling",
+      "score": 0.36
+     }
+    ],
+    "equipment": {
+     "excavator": 2,
+     "dump_truck": 1
+    },
+    "materials": {},
+    "image_url": "/assets/mock-photo.svg",
+    "analysis_id": "an-018"
+   },
+   {
+    "image_id": "img-019",
+    "captured_at": "2024-06-21",
+    "top_stage": "foundation",
+    "top_score": 0.6,
+    "stages": [
+     {
+      "stage_key": "foundation",
+      "score": 0.6
+     },
+     {
+      "stage_key": "piling",
+      "score": 0.1
+     },
+     {
+      "stage_key": "site_preparation",
+      "score": 0.08
+     }
+    ],
+    "equipment": {
+     "concrete_mixer": 1
+    },
+    "materials": {
+     "rebar": 0.18,
+     "formwork": 0.07
+    },
+    "image_url": "/assets/mock-photo.svg",
+    "analysis_id": "an-019"
+   },
+   {
+    "image_id": "img-020",
+    "captured_at": "2024-06-25",
+    "top_stage": "excavation",
+    "top_score": 0.68,
+    "stages": [
+     {
+      "stage_key": "excavation",
+      "score": 0.68
+     },
+     {
+      "stage_key": "piling",
+      "score": 0.42
+     },
+     {
+      "stage_key": "site_preparation",
+      "score": 0.21
+     }
+    ],
+    "equipment": {
+     "excavator": 2,
+     "dump_truck": 1
+    },
+    "materials": {},
+    "image_url": "/assets/mock-photo.svg",
+    "analysis_id": "an-020"
+   },
+   {
+    "image_id": "img-021",
+    "captured_at": "2024-06-25",
+    "top_stage": null,
+    "top_score": 0.21,
+    "stages": [
+     {
+      "stage_key": "site_preparation",
+      "score": 0.2
+     },
+     {
+      "stage_key": "piling",
+      "score": 0.17
+     }
+    ],
+    "equipment": {},
+    "materials": {},
+    "image_url": "/assets/mock-photo.svg",
+    "analysis_id": "an-021"
+   }
+  ],
+  "alerts": [
+   {
+    "severity": "high",
+    "kind": "behind",
+    "stage_key": "excavation",
+    "message": "Разработка котлована: отстаём на 25 дней — экскаватор и самосвалы видны после планового окончания 31.05.",
+    "image_ids": [
+     "img-014",
+     "img-016",
+     "img-018",
+     "img-020"
+    ]
+   },
+   {
+    "severity": "medium",
+    "kind": "at_risk",
+    "stage_key": "excavation",
+    "message": "Разработка котлована: экскаватор без самосвалов на 2 из 4 последних снимков — риск снижения темпа.",
+    "image_ids": [
+     "img-020",
+     "img-016"
+    ]
+   },
+   {
+    "severity": "medium",
+    "kind": "behind",
+    "stage_key": "foundation",
+    "message": "Фундаментная плита: старт задерживается на 9 дней.",
+    "image_ids": [
+     "img-015",
+     "img-017",
+     "img-019"
+    ]
+   },
+   {
+    "severity": "low",
+    "kind": "unexpected_equipment",
+    "stage_key": null,
+    "message": "Бетоносмеситель в кадре 07.06: не нужен ни одному активному этапу по плану.",
+    "image_ids": [
+     "img-015"
+    ]
+   }
+  ]
+ },
+ "analyses": {
+  "img-001": {
+   "image_id": "img-001",
+   "captured_at": "2024-03-05",
+   "detections": [
+    {
+     "equipment": "bulldozer",
+     "confidence": 0.95,
+     "bbox": [
+      0.08,
+      0.499,
+      0.262,
+      0.745
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "dump_truck",
+     "confidence": 0.86,
+     "bbox": [
+      0.312,
+      0.511,
+      0.496,
+      0.754
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    }
+   ],
+   "materials": [],
+   "stages": [
+    {
+     "stage_key": "site_preparation",
+     "score": 0.64,
+     "explanation": "вижу bulldozer, dump_truck"
+    },
+    {
+     "stage_key": "piling",
+     "score": 0.24,
+     "explanation": null
+    },
+    {
+     "stage_key": "excavation",
+     "score": 0.09,
+     "explanation": null
+    }
+   ],
+   "top_stage": "site_preparation"
+  },
+  "img-002": {
+   "image_id": "img-002",
+   "captured_at": "2024-03-12",
+   "detections": [
+    {
+     "equipment": "bulldozer",
+     "confidence": 0.62,
+     "bbox": [
+      0.08,
+      0.496,
+      0.311,
+      0.707
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "dump_truck",
+     "confidence": 0.89,
+     "bbox": [
+      0.361,
+      0.613,
+      0.564,
+      0.897
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    }
+   ],
+   "materials": [],
+   "stages": [
+    {
+     "stage_key": "site_preparation",
+     "score": 0.86,
+     "explanation": "вижу bulldozer, dump_truck"
+    },
+    {
+     "stage_key": "excavation",
+     "score": 0.43,
+     "explanation": null
+    },
+    {
+     "stage_key": "piling",
+     "score": 0.06,
+     "explanation": null
+    }
+   ],
+   "top_stage": "site_preparation"
+  },
+  "img-003": {
+   "image_id": "img-003",
+   "captured_at": "2024-03-18",
+   "detections": [
+    {
+     "equipment": "bulldozer",
+     "confidence": 0.9,
+     "bbox": [
+      0.08,
+      0.609,
+      0.298,
+      0.8
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "dump_truck",
+     "confidence": 0.78,
+     "bbox": [
+      0.348,
+      0.605,
+      0.572,
+      0.821
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    }
+   ],
+   "materials": [],
+   "stages": [
+    {
+     "stage_key": "site_preparation",
+     "score": 0.69,
+     "explanation": "вижу bulldozer, dump_truck"
+    },
+    {
+     "stage_key": "excavation",
+     "score": 0.25,
+     "explanation": null
+    },
+    {
+     "stage_key": "piling",
+     "score": 0.12,
+     "explanation": null
+    }
+   ],
+   "top_stage": "site_preparation"
+  },
+  "img-004": {
+   "image_id": "img-004",
+   "captured_at": "2024-03-20",
+   "detections": [
+    {
+     "equipment": "drilling_rig",
+     "confidence": 0.87,
+     "bbox": [
+      0.08,
+      0.494,
+      0.296,
+      0.702
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "mobile_crane",
+     "confidence": 0.76,
+     "bbox": [
+      0.346,
+      0.62,
+      0.533,
+      0.855
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    }
+   ],
+   "materials": [
+    {
+     "material": "pipes",
+     "confidence": 0.68,
+     "bbox": [
+      0.55,
+      0.72,
+      0.93,
+      0.95
+     ]
+    }
+   ],
+   "stages": [
+    {
+     "stage_key": "piling",
+     "score": 0.88,
+     "explanation": "вижу drilling_rig, mobile_crane"
+    },
+    {
+     "stage_key": "site_preparation",
+     "score": 0.22,
+     "explanation": null
+    },
+    {
+     "stage_key": "excavation",
+     "score": 0.17,
+     "explanation": null
+    }
+   ],
+   "top_stage": "piling"
+  },
+  "img-005": {
+   "image_id": "img-005",
+   "captured_at": "2024-03-28",
+   "detections": [
+    {
+     "equipment": "drilling_rig",
+     "confidence": 0.72,
+     "bbox": [
+      0.08,
+      0.481,
+      0.311,
+      0.714
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "mobile_crane",
+     "confidence": 0.68,
+     "bbox": [
+      0.361,
+      0.484,
+      0.588,
+      0.74
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    }
+   ],
+   "materials": [
+    {
+     "material": "pipes",
+     "confidence": 0.74,
+     "bbox": [
+      0.55,
+      0.72,
+      0.93,
+      0.95
+     ]
+    }
+   ],
+   "stages": [
+    {
+     "stage_key": "piling",
+     "score": 0.81,
+     "explanation": "вижу drilling_rig, mobile_crane"
+    },
+    {
+     "stage_key": "excavation",
+     "score": 0.42,
+     "explanation": null
+    },
+    {
+     "stage_key": "site_preparation",
+     "score": 0.08,
+     "explanation": null
+    }
+   ],
+   "top_stage": "piling"
+  },
+  "img-006": {
+   "image_id": "img-006",
+   "captured_at": "2024-04-05",
+   "detections": [
+    {
+     "equipment": "drilling_rig",
+     "confidence": 0.58,
+     "bbox": [
+      0.08,
+      0.511,
+      0.283,
+      0.694
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "mobile_crane",
+     "confidence": 0.68,
+     "bbox": [
+      0.333,
+      0.565,
+      0.59,
+      0.779
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    }
+   ],
+   "materials": [
+    {
+     "material": "pipes",
+     "confidence": 0.56,
+     "bbox": [
+      0.55,
+      0.72,
+      0.93,
+      0.95
+     ]
+    }
+   ],
+   "stages": [
+    {
+     "stage_key": "piling",
+     "score": 0.81,
+     "explanation": "вижу drilling_rig, mobile_crane"
+    },
+    {
+     "stage_key": "site_preparation",
+     "score": 0.42,
+     "explanation": null
+    },
+    {
+     "stage_key": "excavation",
+     "score": 0.1,
+     "explanation": null
+    }
+   ],
+   "top_stage": "piling"
+  },
+  "img-007": {
+   "image_id": "img-007",
+   "captured_at": "2024-04-12",
+   "detections": [
+    {
+     "equipment": "drilling_rig",
+     "confidence": 0.91,
+     "bbox": [
+      0.08,
+      0.555,
+      0.314,
+      0.744
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "mobile_crane",
+     "confidence": 0.61,
+     "bbox": [
+      0.364,
+      0.552,
+      0.568,
+      0.762
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    }
+   ],
+   "materials": [
+    {
+     "material": "pipes",
+     "confidence": 0.65,
+     "bbox": [
+      0.55,
+      0.72,
+      0.93,
+      0.95
+     ]
+    }
+   ],
+   "stages": [
+    {
+     "stage_key": "piling",
+     "score": 0.67,
+     "explanation": "вижу drilling_rig, mobile_crane"
+    },
+    {
+     "stage_key": "excavation",
+     "score": 0.4,
+     "explanation": null
+    },
+    {
+     "stage_key": "site_preparation",
+     "score": 0.39,
+     "explanation": null
+    }
+   ],
+   "top_stage": "piling"
+  },
+  "img-008": {
+   "image_id": "img-008",
+   "captured_at": "2024-04-18",
+   "detections": [
+    {
+     "equipment": "excavator",
+     "confidence": 0.63,
+     "bbox": [
+      0.08,
+      0.525,
+      0.34,
+      0.773
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "excavator",
+     "confidence": 0.84,
+     "bbox": [
+      0.39,
+      0.461,
+      0.643,
+      0.654
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "dump_truck",
+     "confidence": 0.77,
+     "bbox": [
+      0.693,
+      0.553,
+      0.921,
+      0.85
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    }
+   ],
+   "materials": [],
+   "stages": [
+    {
+     "stage_key": "excavation",
+     "score": 0.68,
+     "explanation": "вижу excavator, dump_truck"
+    },
+    {
+     "stage_key": "site_preparation",
+     "score": 0.37,
+     "explanation": null
+    },
+    {
+     "stage_key": "piling",
+     "score": 0.2,
+     "explanation": null
+    }
+   ],
+   "top_stage": "excavation"
+  },
+  "img-009": {
+   "image_id": "img-009",
+   "captured_at": "2024-04-25",
+   "detections": [
+    {
+     "equipment": "excavator",
+     "confidence": 0.74,
+     "bbox": [
+      0.08,
+      0.618,
+      0.322,
+      0.847
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "truck",
+     "confidence": 0.72,
+     "bbox": [
+      0.372,
+      0.456,
+      0.571,
+      0.686
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    }
+   ],
+   "materials": [
+    {
+     "material": "pipes",
+     "confidence": 0.54,
+     "bbox": [
+      0.55,
+      0.72,
+      0.93,
+      0.95
+     ]
+    }
+   ],
+   "stages": [
+    {
+     "stage_key": "utilities",
+     "score": 0.77,
+     "explanation": "вижу excavator, truck"
+    },
+    {
+     "stage_key": "site_preparation",
+     "score": 0.26,
+     "explanation": null
+    },
+    {
+     "stage_key": "piling",
+     "score": 0.1,
+     "explanation": null
+    }
+   ],
+   "top_stage": "utilities"
+  },
+  "img-010": {
+   "image_id": "img-010",
+   "captured_at": "2024-05-02",
+   "detections": [
+    {
+     "equipment": "excavator",
+     "confidence": 0.72,
+     "bbox": [
+      0.08,
+      0.581,
+      0.28,
+      0.824
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "excavator",
+     "confidence": 0.68,
+     "bbox": [
+      0.33,
+      0.601,
+      0.531,
+      0.82
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "dump_truck",
+     "confidence": 0.81,
+     "bbox": [
+      0.581,
+      0.614,
+      0.771,
+      0.862
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    }
+   ],
+   "materials": [],
+   "stages": [
+    {
+     "stage_key": "excavation",
+     "score": 0.88,
+     "explanation": "вижу excavator, dump_truck"
+    },
+    {
+     "stage_key": "site_preparation",
+     "score": 0.13,
+     "explanation": null
+    },
+    {
+     "stage_key": "piling",
+     "score": 0.06,
+     "explanation": null
+    }
+   ],
+   "top_stage": "excavation"
+  },
+  "img-011": {
+   "image_id": "img-011",
+   "captured_at": "2024-05-10",
+   "detections": [
+    {
+     "equipment": "excavator",
+     "confidence": 0.62,
+     "bbox": [
+      0.08,
+      0.611,
+      0.334,
+      0.859
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "excavator",
+     "confidence": 0.68,
+     "bbox": [
+      0.384,
+      0.603,
+      0.588,
+      0.84
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "dump_truck",
+     "confidence": 0.87,
+     "bbox": [
+      0.638,
+      0.586,
+      0.852,
+      0.792
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    }
+   ],
+   "materials": [],
+   "stages": [
+    {
+     "stage_key": "excavation",
+     "score": 0.87,
+     "explanation": "вижу excavator, dump_truck"
+    },
+    {
+     "stage_key": "piling",
+     "score": 0.22,
+     "explanation": null
+    },
+    {
+     "stage_key": "site_preparation",
+     "score": 0.2,
+     "explanation": null
+    }
+   ],
+   "top_stage": "excavation"
+  },
+  "img-012": {
+   "image_id": "img-012",
+   "captured_at": "2024-05-17",
+   "detections": [
+    {
+     "equipment": "excavator",
+     "confidence": 0.91,
+     "bbox": [
+      0.08,
+      0.458,
+      0.337,
+      0.718
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "truck",
+     "confidence": 0.57,
+     "bbox": [
+      0.387,
+      0.563,
+      0.577,
+      0.86
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    }
+   ],
+   "materials": [
+    {
+     "material": "pipes",
+     "confidence": 0.51,
+     "bbox": [
+      0.55,
+      0.72,
+      0.93,
+      0.95
+     ]
+    }
+   ],
+   "stages": [
+    {
+     "stage_key": "utilities",
+     "score": 0.68,
+     "explanation": "вижу excavator, truck"
+    },
+    {
+     "stage_key": "site_preparation",
+     "score": 0.44,
+     "explanation": null
+    },
+    {
+     "stage_key": "piling",
+     "score": 0.08,
+     "explanation": null
+    }
+   ],
+   "top_stage": "utilities"
+  },
+  "img-013": {
+   "image_id": "img-013",
+   "captured_at": "2024-05-27",
+   "detections": [
+    {
+     "equipment": "excavator",
+     "confidence": 0.9,
+     "bbox": [
+      0.08,
+      0.452,
+      0.26,
+      0.743
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "excavator",
+     "confidence": 0.9,
+     "bbox": [
+      0.31,
+      0.583,
+      0.5,
+      0.86
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "dump_truck",
+     "confidence": 0.82,
+     "bbox": [
+      0.55,
+      0.484,
+      0.774,
+      0.77
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    }
+   ],
+   "materials": [],
+   "stages": [
+    {
+     "stage_key": "excavation",
+     "score": 0.79,
+     "explanation": "вижу excavator, dump_truck"
+    },
+    {
+     "stage_key": "piling",
+     "score": 0.42,
+     "explanation": null
+    },
+    {
+     "stage_key": "site_preparation",
+     "score": 0.14,
+     "explanation": null
+    }
+   ],
+   "top_stage": "excavation"
+  },
+  "img-014": {
+   "image_id": "img-014",
+   "captured_at": "2024-06-03",
+   "detections": [
+    {
+     "equipment": "excavator",
+     "confidence": 0.79,
+     "bbox": [
+      0.08,
+      0.597,
+      0.308,
+      0.836
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "excavator",
+     "confidence": 0.76,
+     "bbox": [
+      0.358,
+      0.58,
+      0.549,
+      0.804
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "dump_truck",
+     "confidence": 0.58,
+     "bbox": [
+      0.599,
+      0.591,
+      0.78,
+      0.871
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    }
+   ],
+   "materials": [],
+   "stages": [
+    {
+     "stage_key": "excavation",
+     "score": 0.67,
+     "explanation": "вижу excavator, dump_truck"
+    },
+    {
+     "stage_key": "piling",
+     "score": 0.06,
+     "explanation": null
+    },
+    {
+     "stage_key": "site_preparation",
+     "score": 0.06,
+     "explanation": null
+    }
+   ],
+   "top_stage": "excavation"
+  },
+  "img-015": {
+   "image_id": "img-015",
+   "captured_at": "2024-06-07",
+   "detections": [
+    {
+     "equipment": "concrete_mixer",
+     "confidence": 0.59,
+     "bbox": [
+      0.08,
+      0.614,
+      0.279,
+      0.853
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    }
+   ],
+   "materials": [
+    {
+     "material": "rebar",
+     "confidence": 0.49,
+     "bbox": [
+      0.55,
+      0.72,
+      0.93,
+      0.95
+     ]
+    }
+   ],
+   "stages": [
+    {
+     "stage_key": "foundation",
+     "score": 0.75,
+     "explanation": "вижу concrete_mixer"
+    },
+    {
+     "stage_key": "piling",
+     "score": 0.36,
+     "explanation": null
+    },
+    {
+     "stage_key": "site_preparation",
+     "score": 0.17,
+     "explanation": null
+    }
+   ],
+   "top_stage": "foundation"
+  },
+  "img-016": {
+   "image_id": "img-016",
+   "captured_at": "2024-06-10",
+   "detections": [
+    {
+     "equipment": "excavator",
+     "confidence": 0.67,
+     "bbox": [
+      0.08,
+      0.483,
+      0.265,
+      0.769
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "excavator",
+     "confidence": 0.62,
+     "bbox": [
+      0.315,
+      0.586,
+      0.562,
+      0.816
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "dump_truck",
+     "confidence": 0.75,
+     "bbox": [
+      0.612,
+      0.475,
+      0.862,
+      0.677
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    }
+   ],
+   "materials": [],
+   "stages": [
+    {
+     "stage_key": "excavation",
+     "score": 0.88,
+     "explanation": "вижу excavator, dump_truck"
+    },
+    {
+     "stage_key": "piling",
+     "score": 0.39,
+     "explanation": null
+    },
+    {
+     "stage_key": "site_preparation",
+     "score": 0.36,
+     "explanation": null
+    }
+   ],
+   "top_stage": "excavation"
+  },
+  "img-017": {
+   "image_id": "img-017",
+   "captured_at": "2024-06-14",
+   "detections": [
+    {
+     "equipment": "concrete_mixer",
+     "confidence": 0.74,
+     "bbox": [
+      0.08,
+      0.572,
+      0.304,
+      0.81
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    }
+   ],
+   "materials": [
+    {
+     "material": "rebar",
+     "confidence": 0.48,
+     "bbox": [
+      0.55,
+      0.72,
+      0.93,
+      0.95
+     ]
+    }
+   ],
+   "stages": [
+    {
+     "stage_key": "foundation",
+     "score": 0.68,
+     "explanation": "вижу concrete_mixer"
+    },
+    {
+     "stage_key": "piling",
+     "score": 0.17,
+     "explanation": null
+    },
+    {
+     "stage_key": "site_preparation",
+     "score": 0.05,
+     "explanation": null
+    }
+   ],
+   "top_stage": "foundation"
+  },
+  "img-018": {
+   "image_id": "img-018",
+   "captured_at": "2024-06-18",
+   "detections": [
+    {
+     "equipment": "excavator",
+     "confidence": 0.68,
+     "bbox": [
+      0.08,
+      0.554,
+      0.31,
+      0.815
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "excavator",
+     "confidence": 0.67,
+     "bbox": [
+      0.36,
+      0.605,
+      0.613,
+      0.841
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "dump_truck",
+     "confidence": 0.73,
+     "bbox": [
+      0.663,
+      0.554,
+      0.913,
+      0.829
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    }
+   ],
+   "materials": [],
+   "stages": [
+    {
+     "stage_key": "excavation",
+     "score": 0.86,
+     "explanation": "вижу excavator, dump_truck"
+    },
+    {
+     "stage_key": "site_preparation",
+     "score": 0.44,
+     "explanation": null
+    },
+    {
+     "stage_key": "piling",
+     "score": 0.36,
+     "explanation": null
+    }
+   ],
+   "top_stage": "excavation"
+  },
+  "img-019": {
+   "image_id": "img-019",
+   "captured_at": "2024-06-21",
+   "detections": [
+    {
+     "equipment": "concrete_mixer",
+     "confidence": 0.91,
+     "bbox": [
+      0.08,
+      0.48,
+      0.272,
+      0.757
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    }
+   ],
+   "materials": [
+    {
+     "material": "rebar",
+     "confidence": 0.58,
+     "bbox": [
+      0.55,
+      0.72,
+      0.93,
+      0.95
+     ]
+    }
+   ],
+   "stages": [
+    {
+     "stage_key": "foundation",
+     "score": 0.6,
+     "explanation": "вижу concrete_mixer"
+    },
+    {
+     "stage_key": "piling",
+     "score": 0.1,
+     "explanation": null
+    },
+    {
+     "stage_key": "site_preparation",
+     "score": 0.08,
+     "explanation": null
+    }
+   ],
+   "top_stage": "foundation"
+  },
+  "img-020": {
+   "image_id": "img-020",
+   "captured_at": "2024-06-25",
+   "detections": [
+    {
+     "equipment": "excavator",
+     "confidence": 0.67,
+     "bbox": [
+      0.08,
+      0.506,
+      0.274,
+      0.764
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "excavator",
+     "confidence": 0.88,
+     "bbox": [
+      0.324,
+      0.611,
+      0.506,
+      0.794
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    },
+    {
+     "equipment": "dump_truck",
+     "confidence": 0.61,
+     "bbox": [
+      0.556,
+      0.612,
+      0.8,
+      0.889
+     ],
+     "sources": [
+      "sitesense_yolo",
+      "grounding_dino"
+     ]
+    }
+   ],
+   "materials": [],
+   "stages": [
+    {
+     "stage_key": "excavation",
+     "score": 0.68,
+     "explanation": "вижу excavator, dump_truck"
+    },
+    {
+     "stage_key": "piling",
+     "score": 0.42,
+     "explanation": null
+    },
+    {
+     "stage_key": "site_preparation",
+     "score": 0.21,
+     "explanation": null
+    }
+   ],
+   "top_stage": "excavation"
+  },
+  "img-021": {
+   "image_id": "img-021",
+   "captured_at": "2024-06-25",
+   "detections": [],
+   "materials": [],
+   "stages": [
+    {
+     "stage_key": "site_preparation",
+     "score": 0.2,
+     "explanation": null
+    },
+    {
+     "stage_key": "piling",
+     "score": 0.17,
+     "explanation": null
+    }
+   ],
+   "top_stage": null
+  }
+ }
+}

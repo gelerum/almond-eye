@@ -1,0 +1,1266 @@
+{
+ "description": "Ручная разметка 100 кадров организатора: площадка, дата со штампа в кадре, наличие техники (image-level), наблюдаемый этап.",
+ "annotator": "Claude (визуальный просмотр кадров 600px); не верифицировано человеком",
+ "created": "2026-09-28",
+ "equipment_vocabulary": [
+  "concrete_mixer",
+  "concrete_pump",
+  "crawler_crane",
+  "drilling_rig",
+  "dump_truck",
+  "excavator",
+  "loader_crane",
+  "mobile_crane",
+  "roller",
+  "tower_crane",
+  "truck",
+  "wheel_loader"
+ ],
+ "sites": [
+  {
+   "id": "site-a",
+   "name": "Площадка A — деловой квартал, 2023"
+  },
+  {
+   "id": "site-b",
+   "name": "Площадка B — квартал у кирпичных корпусов, 2024"
+  },
+  {
+   "id": "site-c",
+   "name": "Площадка C — промзона, 2023–2024"
+  },
+  {
+   "id": "site-d",
+   "name": "Площадка D — жилой квартал, 2024–2025"
+  },
+  {
+   "id": "site-e",
+   "name": "Площадка E — у тёмных башен, 2026"
+  },
+  {
+   "id": "site-f",
+   "name": "Площадка F — 2026"
+  },
+  {
+   "id": "site-g",
+   "name": "Площадка G — у стеклянного корпуса (без дат)"
+  },
+  {
+   "id": "site-h",
+   "name": "Площадка H — у школы с муралом (без дат)"
+  },
+  {
+   "id": "site-i",
+   "name": "Площадка I — у сталинских домов (без дат)"
+  },
+  {
+   "id": "site-j",
+   "name": "Площадка J — сдаваемый жилой дом"
+  }
+ ],
+ "images": [
+  {
+   "file": "Screenshot_1.png",
+   "site_id": "site-j",
+   "captured_at": "2026-07-15",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "wheel_loader"
+   ],
+   "observed_stage": "landscaping"
+  },
+  {
+   "file": "Screenshot_2.png",
+   "site_id": "site-a",
+   "captured_at": "2023-04-14",
+   "time_source": "stamp",
+   "view": "aerial",
+   "equipment": [
+    "drilling_rig"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_3.png",
+   "site_id": "site-a",
+   "captured_at": "2023-04-14",
+   "time_source": "stamp",
+   "view": "aerial",
+   "equipment": [
+    "drilling_rig",
+    "excavator"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_4.png",
+   "site_id": "site-a",
+   "captured_at": "2023-04-14",
+   "time_source": "stamp",
+   "view": "aerial",
+   "equipment": [
+    "drilling_rig"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_5.png",
+   "site_id": "site-a",
+   "captured_at": "2023-06-19",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "tower_crane"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_6.png",
+   "site_id": "site-a",
+   "captured_at": "2023-06-19",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "crawler_crane",
+    "tower_crane"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_7.png",
+   "site_id": "site-a",
+   "captured_at": "2023-07-16",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "excavator",
+    "tower_crane",
+    "wheel_loader"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_8.png",
+   "site_id": "site-a",
+   "captured_at": "2023-07-16",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "excavator"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_9.png",
+   "site_id": "site-a",
+   "captured_at": "2023-07-16",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "excavator",
+    "tower_crane"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_10.png",
+   "site_id": "site-a",
+   "captured_at": "2023-08-14",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "excavator"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_11.png",
+   "site_id": "site-a",
+   "captured_at": "2023-08-14",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "crawler_crane",
+    "drilling_rig",
+    "tower_crane"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_12.png",
+   "site_id": "site-a",
+   "captured_at": "2023-09-14",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "excavator",
+    "tower_crane"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_13.png",
+   "site_id": "site-a",
+   "captured_at": "2023-09-14",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "excavator",
+    "tower_crane",
+    "wheel_loader"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_14.png",
+   "site_id": "site-a",
+   "captured_at": "2023-09-14",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "excavator",
+    "tower_crane"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_15.png",
+   "site_id": "site-a",
+   "captured_at": "2023-09-14",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "excavator",
+    "tower_crane",
+    "truck"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_16.png",
+   "site_id": "site-a",
+   "captured_at": "2023-10-13",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "excavator"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_17.png",
+   "site_id": "site-a",
+   "captured_at": "2024-08-09",
+   "time_source": "stamp",
+   "view": "aerial",
+   "equipment": [
+    "tower_crane"
+   ],
+   "observed_stage": "superstructure"
+  },
+  {
+   "file": "Screenshot_18.png",
+   "site_id": "site-e",
+   "captured_at": "2026-01-02",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "excavator"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_19.png",
+   "site_id": "site-e",
+   "captured_at": "2026-02-02",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "crawler_crane",
+    "drilling_rig",
+    "excavator"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_20.png",
+   "site_id": "site-e",
+   "captured_at": "2026-03-02",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "excavator",
+    "tower_crane"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_21.png",
+   "site_id": "site-e",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "tower_crane"
+   ],
+   "observed_stage": "underground"
+  },
+  {
+   "file": "Screenshot_22.png",
+   "site_id": "site-b",
+   "captured_at": "2024-01-24",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "mobile_crane"
+   ],
+   "observed_stage": "site_prep"
+  },
+  {
+   "file": "Screenshot_23.png",
+   "site_id": "site-b",
+   "captured_at": "2024-01-24",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "excavator"
+   ],
+   "observed_stage": "site_prep"
+  },
+  {
+   "file": "Screenshot_24.png",
+   "site_id": "site-b",
+   "captured_at": "2024-01-24",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "mobile_crane"
+   ],
+   "observed_stage": "site_prep"
+  },
+  {
+   "file": "Screenshot_25.png",
+   "site_id": "site-b",
+   "captured_at": "2024-01-24",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "excavator"
+   ],
+   "observed_stage": "site_prep"
+  },
+  {
+   "file": "Screenshot_26.png",
+   "site_id": "site-b",
+   "captured_at": "2024-01-24",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "excavator"
+   ],
+   "observed_stage": "site_prep"
+  },
+  {
+   "file": "Screenshot_27.png",
+   "site_id": "site-b",
+   "captured_at": "2024-02-21",
+   "time_source": "stamp",
+   "view": "aerial",
+   "equipment": [
+    "drilling_rig"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_28.png",
+   "site_id": "site-b",
+   "captured_at": "2024-02-21",
+   "time_source": "stamp",
+   "view": "aerial",
+   "equipment": [
+    "drilling_rig"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_29.png",
+   "site_id": "site-b",
+   "captured_at": "2024-03-25",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "excavator"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_30.png",
+   "site_id": "site-b",
+   "captured_at": "2024-03-25",
+   "time_source": "stamp",
+   "view": "aerial",
+   "equipment": [
+    "concrete_mixer",
+    "drilling_rig"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_31.png",
+   "site_id": "site-b",
+   "captured_at": "2024-03-25",
+   "time_source": "stamp",
+   "view": "aerial",
+   "equipment": [
+    "concrete_mixer",
+    "drilling_rig",
+    "excavator"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_32.png",
+   "site_id": "site-b",
+   "captured_at": "2024-03-25",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "crawler_crane",
+    "drilling_rig",
+    "excavator"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_33.png",
+   "site_id": "site-b",
+   "captured_at": "2024-04-24",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "concrete_mixer",
+    "crawler_crane",
+    "drilling_rig"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_34.png",
+   "site_id": "site-b",
+   "captured_at": "2024-04-24",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "crawler_crane",
+    "drilling_rig",
+    "mobile_crane"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_35.png",
+   "site_id": "site-b",
+   "captured_at": "2024-04-24",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "excavator"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_36.png",
+   "site_id": "site-b",
+   "captured_at": "2024-04-24",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "excavator"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_37.png",
+   "site_id": "site-b",
+   "captured_at": "2024-04-24",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_38.png",
+   "site_id": "site-b",
+   "captured_at": "2024-04-24",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "excavator"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_39.png",
+   "site_id": "site-b",
+   "captured_at": "2024-04-24",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_40.png",
+   "site_id": "site-b",
+   "captured_at": "2024-04-24",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "excavator"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_41.png",
+   "site_id": "site-b",
+   "captured_at": "2024-04-24",
+   "time_source": "stamp",
+   "view": "aerial",
+   "equipment": [
+    "drilling_rig",
+    "excavator"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_42.png",
+   "site_id": "site-b",
+   "captured_at": "2024-05-27",
+   "time_source": "stamp",
+   "view": "aerial",
+   "equipment": [
+    "drilling_rig",
+    "dump_truck",
+    "excavator"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_43.png",
+   "site_id": "site-b",
+   "captured_at": "2024-05-27",
+   "time_source": "stamp",
+   "view": "aerial",
+   "equipment": [
+    "drilling_rig",
+    "dump_truck",
+    "excavator"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_44.png",
+   "site_id": "site-b",
+   "captured_at": "2024-05-27",
+   "time_source": "stamp",
+   "view": "aerial",
+   "equipment": [
+    "crawler_crane",
+    "drilling_rig",
+    "dump_truck"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_45.png",
+   "site_id": "site-b",
+   "captured_at": "2024-05-27",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "crawler_crane",
+    "drilling_rig"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_46.png",
+   "site_id": "site-b",
+   "captured_at": "2024-05-27",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "crawler_crane",
+    "excavator",
+    "wheel_loader"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_47.png",
+   "site_id": "site-b",
+   "captured_at": "2024-06-25",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "excavator"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_48.png",
+   "site_id": "site-b",
+   "captured_at": "2024-06-25",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "excavator"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_49.png",
+   "site_id": "site-g",
+   "captured_at": null,
+   "time_source": null,
+   "view": "aerial",
+   "equipment": [
+    "crawler_crane",
+    "drilling_rig",
+    "excavator"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_50.png",
+   "site_id": "site-g",
+   "captured_at": null,
+   "time_source": null,
+   "view": "aerial",
+   "equipment": [
+    "crawler_crane",
+    "drilling_rig",
+    "excavator"
+   ],
+   "observed_stage": "foundation"
+  },
+  {
+   "file": "Screenshot_51.png",
+   "site_id": "site-g",
+   "captured_at": null,
+   "time_source": null,
+   "view": "aerial",
+   "equipment": [
+    "crawler_crane",
+    "drilling_rig"
+   ],
+   "observed_stage": "foundation"
+  },
+  {
+   "file": "Screenshot_52.png",
+   "site_id": "site-g",
+   "captured_at": null,
+   "time_source": null,
+   "view": "aerial",
+   "equipment": [
+    "excavator",
+    "mobile_crane",
+    "tower_crane"
+   ],
+   "observed_stage": "foundation"
+  },
+  {
+   "file": "Screenshot_53.png",
+   "site_id": "site-g",
+   "captured_at": null,
+   "time_source": null,
+   "view": "aerial",
+   "equipment": [
+    "excavator"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_54.png",
+   "site_id": "site-g",
+   "captured_at": null,
+   "time_source": null,
+   "view": "aerial",
+   "equipment": [
+    "excavator",
+    "tower_crane",
+    "wheel_loader"
+   ],
+   "observed_stage": "underground"
+  },
+  {
+   "file": "Screenshot_55.png",
+   "site_id": "site-g",
+   "captured_at": null,
+   "time_source": null,
+   "view": "aerial",
+   "equipment": [
+    "excavator",
+    "tower_crane"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_56.png",
+   "site_id": "site-g",
+   "captured_at": null,
+   "time_source": null,
+   "view": "aerial",
+   "equipment": [
+    "excavator",
+    "tower_crane"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_57.png",
+   "site_id": "site-g",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "excavator",
+    "wheel_loader"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_58.png",
+   "site_id": "site-g",
+   "captured_at": null,
+   "time_source": null,
+   "view": "aerial",
+   "equipment": [
+    "tower_crane"
+   ],
+   "observed_stage": "superstructure"
+  },
+  {
+   "file": "Screenshot_59.png",
+   "site_id": "site-g",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "tower_crane",
+    "truck"
+   ],
+   "observed_stage": "superstructure"
+  },
+  {
+   "file": "Screenshot_60.png",
+   "site_id": "site-f",
+   "captured_at": "2026-04-02",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "roller"
+   ],
+   "observed_stage": "site_prep"
+  },
+  {
+   "file": "Screenshot_61.png",
+   "site_id": "site-f",
+   "captured_at": "2026-05-20",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "excavator",
+    "wheel_loader"
+   ],
+   "observed_stage": "site_prep"
+  },
+  {
+   "file": "Screenshot_62.png",
+   "site_id": "site-d",
+   "captured_at": "2024-09-17",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "wheel_loader"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_63.png",
+   "site_id": "site-d",
+   "captured_at": "2024-10-24",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "excavator"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_64.png",
+   "site_id": "site-d",
+   "captured_at": "2024-11-26",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "excavator"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_65.png",
+   "site_id": "site-d",
+   "captured_at": "2024-12-16",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "excavator",
+    "tower_crane"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_66.png",
+   "site_id": "site-d",
+   "captured_at": "2024-12-16",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "excavator"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_67.png",
+   "site_id": "site-d",
+   "captured_at": "2025-02-20",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "mobile_crane",
+    "tower_crane"
+   ],
+   "observed_stage": "underground"
+  },
+  {
+   "file": "Screenshot_68.png",
+   "site_id": "site-h",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "excavator"
+   ],
+   "observed_stage": "site_prep"
+  },
+  {
+   "file": "Screenshot_69.png",
+   "site_id": "site-h",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "excavator"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_70.png",
+   "site_id": "site-h",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "excavator"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_71.png",
+   "site_id": "site-h",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "dump_truck",
+    "excavator"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_72.png",
+   "site_id": "site-h",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "excavator"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_73.png",
+   "site_id": "site-h",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "excavator"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_74.png",
+   "site_id": "site-h",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "excavator"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_75.png",
+   "site_id": "site-h",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "concrete_pump"
+   ],
+   "observed_stage": "foundation"
+  },
+  {
+   "file": "Screenshot_76.png",
+   "site_id": "site-h",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "excavator"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_77.png",
+   "site_id": "site-h",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "loader_crane",
+    "truck"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_78.png",
+   "site_id": "site-h",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "excavator"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_79.png",
+   "site_id": "site-c",
+   "captured_at": "2023-10-18",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "wheel_loader"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_80.png",
+   "site_id": "site-c",
+   "captured_at": "2023-10-18",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "tower_crane",
+    "wheel_loader"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_81.png",
+   "site_id": "site-c",
+   "captured_at": "2023-10-18",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "tower_crane"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_82.png",
+   "site_id": "site-c",
+   "captured_at": "2023-10-18",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "wheel_loader"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_83.png",
+   "site_id": "site-c",
+   "captured_at": "2023-11-27",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "excavator",
+    "wheel_loader"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_84.png",
+   "site_id": "site-c",
+   "captured_at": "2023-11-27",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "mobile_crane"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_85.png",
+   "site_id": "site-c",
+   "captured_at": null,
+   "time_source": null,
+   "view": "aerial",
+   "equipment": [
+    "drilling_rig",
+    "dump_truck",
+    "mobile_crane"
+   ],
+   "observed_stage": "piling"
+  },
+  {
+   "file": "Screenshot_86.png",
+   "site_id": "site-c",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "dump_truck",
+    "excavator",
+    "mobile_crane",
+    "wheel_loader"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_87.png",
+   "site_id": "site-c",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "dump_truck",
+    "excavator",
+    "mobile_crane",
+    "wheel_loader"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_88.png",
+   "site_id": "site-c",
+   "captured_at": "2024-01-21",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "excavator",
+    "mobile_crane"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_89.png",
+   "site_id": "site-c",
+   "captured_at": "2024-01-21",
+   "time_source": "stamp",
+   "view": "aerial",
+   "equipment": [
+    "drilling_rig",
+    "mobile_crane",
+    "tower_crane"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_90.png",
+   "site_id": "site-c",
+   "captured_at": "2024-01-21",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "drilling_rig",
+    "excavator",
+    "mobile_crane",
+    "wheel_loader"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_91.png",
+   "site_id": "site-c",
+   "captured_at": "2024-02-14",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "excavator"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_92.png",
+   "site_id": "site-c",
+   "captured_at": "2024-02-14",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "excavator",
+    "tower_crane"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_93.png",
+   "site_id": "site-c",
+   "captured_at": "2024-02-14",
+   "time_source": "stamp",
+   "view": "aerial",
+   "equipment": [
+    "excavator",
+    "tower_crane"
+   ],
+   "observed_stage": "excavation"
+  },
+  {
+   "file": "Screenshot_94.png",
+   "site_id": "site-c",
+   "captured_at": "2024-02-14",
+   "time_source": "stamp",
+   "view": "ground",
+   "equipment": [
+    "excavator",
+    "tower_crane"
+   ],
+   "observed_stage": "foundation"
+  },
+  {
+   "file": "Screenshot_95.png",
+   "site_id": "site-i",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "excavator",
+    "tower_crane"
+   ],
+   "observed_stage": "underground"
+  },
+  {
+   "file": "Screenshot_96.png",
+   "site_id": "site-i",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "excavator",
+    "tower_crane"
+   ],
+   "observed_stage": "underground"
+  },
+  {
+   "file": "Screenshot_97.png",
+   "site_id": "site-i",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "concrete_mixer",
+    "excavator",
+    "tower_crane"
+   ],
+   "observed_stage": "underground"
+  },
+  {
+   "file": "Screenshot_98.png",
+   "site_id": "site-i",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "excavator"
+   ],
+   "observed_stage": "underground"
+  },
+  {
+   "file": "Screenshot_99.png",
+   "site_id": "site-i",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "concrete_mixer",
+    "dump_truck",
+    "excavator"
+   ],
+   "observed_stage": "underground"
+  },
+  {
+   "file": "Screenshot_100.png",
+   "site_id": "site-i",
+   "captured_at": null,
+   "time_source": null,
+   "view": "ground",
+   "equipment": [
+    "concrete_mixer",
+    "excavator",
+    "tower_crane"
+   ],
+   "observed_stage": "underground"
+  }
+ ]
+}

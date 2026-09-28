@@ -1,0 +1,14 @@
+.git
+.venv
+runtime
+**/__pycache__
+**/*.py[oc]
+.pytest_cache
+node_modules
+.dvc/cache
+.dvc/config.local
+.env
+data/config
+data/raw
+*.pdf
+*.xlsx

@@ -9,6 +9,7 @@ from threading import Lock
 from dataclasses import dataclass
 from pathlib import Path
 from PIL import Image
+from backend.app.services.detector import torch_device
 
 
 class StageModelUnavailable(RuntimeError):
@@ -45,7 +46,7 @@ class UltralyticsStageClassifier:
     def predict(self, image_path: Path) -> StagePrediction:
         try:
             with Image.open(image_path) as image, self.lock:
-                result = self.model.predict(source=image.convert("RGB"), device="cpu", verbose=False)[0]
+                result = self.model.predict(source=image.convert("RGB"), device=torch_device(), verbose=False)[0]
             if result.probs is None:
                 raise ValueError("Модель не вернула классификацию этапа")
             class_id = int(result.probs.top1)

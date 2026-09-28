@@ -11,16 +11,17 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from backend.app.domain.contracts import ImportOptions
 from backend.app.services.import_schedule import preview_import
+from backend.app.paths import DGP_IMAGES, WORK_CATALOG_XLSX
 
 
 def main():
     out = ROOT/"data/manifests"
     out.mkdir(parents=True,exist_ok=True)
-    excel = next(ROOT.glob("*.xlsx"))
+    excel = WORK_CATALOG_XLSX
     preview = preview_import(excel.read_bytes(),excel.name,ImportOptions(recover_date_numbers=True))
     (out/"work-catalog.json").write_text(preview.model_dump_json(indent=2),encoding="utf-8")
     records = []
-    for path in sorted((ROOT/"Строительная_техника").glob("*.png"),key=lambda p:int(p.stem.split('_')[-1])):
+    for path in sorted(DGP_IMAGES.glob("*.png"),key=lambda p:int(p.stem.split('_')[-1])):
         record = {"file":path.relative_to(ROOT).as_posix(),"sha256":hashlib.sha256(path.read_bytes()).hexdigest(),
                   "bytes":path.stat().st_size,"camera_id":None,"captured_at":None,"scene_group":None,
                   "split":"unassigned","annotation_status":"unlabelled","license_status":"organizer_materials_not_verified_for_redistribution"}

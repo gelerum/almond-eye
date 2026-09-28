@@ -1,9 +1,0 @@
-# Install with --no-deps --target runtime/experiments/materials-20260928/packages
-# Uses the existing project environment (torch, numpy, PIL, requests, etc.).
-transformers==4.57.1
-huggingface-hub==0.36.0
-tokenizers==0.22.1
-safetensors==0.6.2
-regex==2025.9.18
-tqdm==4.67.1
-colorama==0.4.6

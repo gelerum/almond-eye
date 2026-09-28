@@ -1,6 +1,8 @@
 import io
 from pathlib import Path
 
+from backend.app.paths import WORK_CATALOG_XLSX
+
 from fastapi.testclient import TestClient
 from PIL import Image
 import pytest
@@ -34,7 +36,7 @@ def test_end_to_end_versions_and_tenant_boundaries(client):
     base=f"/api/projects/{p['id']}"
     cam=post(c,base+'/cameras',{'name':'Камера'})
     z=post(c,base+'/zones',{'name':'Котлован','camera_id':cam['id'],'polygon':[[0,0],[1,0],[1,1],[0,1]],'coverage_confirmed':True})
-    file=next(Path('.').glob('*.xlsx'))
+    file=WORK_CATALOG_XLSX
     preview=c.post(base+'/imports/preview',files={'file':(file.name,file.read_bytes())},data={'options':'{"recover_date_numbers":true}'}).json()
     assert c.post(base+'/imports/confirm',json={'preview_id':preview['id']}).status_code==422
     imported=post(c,base+'/imports/confirm',{'preview_id':preview['id'],'accept_warnings':True})

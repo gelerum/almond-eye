@@ -1,0 +1,137 @@
+# Detector ensemble. Paths are relative to the repository root.
+# Canonical labels: Equipment values (backend/app/domain/contracts.py) or material:<Material>.
+# `optional: true` adapters are skipped when their weights are absent (e.g. before training).
+
+adapters:
+  sitesense:
+    # Zaafan/sitesense-weights, YOLO26-L, MIT (scripts/download_models.py sitesense)
+    type: yolo
+    weights: runtime/models/sitesense/yolo26l_construction_v1.pt
+    conf: 0.15
+    imgsz: 1024
+    classes:
+      excavator: excavator
+      dump_truck: dump_truck
+      bulldozer: bulldozer
+      wheel_loader: wheel_loader
+      mobile_crane: mobile_crane
+      tower_crane: tower_crane
+      roller_compactor: roller
+      cement_mixer: concrete_mixer
+
+  gdino:
+    # IDEA-Research/grounding-dino-base, Apache-2.0, zero-shot
+    type: grounding_dino
+    model: runtime/models/grounding-dino-base
+    box_threshold: 0.3
+    text_threshold: 0.25
+    # One phrase per pass: with many phrases in one query DINO lets one phrase ("truck crane")
+    # absorb most boxes. Standard machines are left to SiteSense; DINO covers the gaps.
+    groups:
+      - drilling rig: drilling_rig
+      - crawler crane: crawler_crane
+      - concrete pump truck: concrete_pump
+      - truck with crane arm: loader_crane
+      - rebar: material:rebar
+        formwork: material:formwork
+        scaffolding: material:scaffolding
+        stack of concrete slabs: material:precast_slabs
+
+  materials:
+    # YOLO11s-seg fine-tuned on VT Structural Material dataset (CC0), scripts/train/*
+    type: yolo
+    optional: true
+    weights: runtime/models/structural-materials/best.pt
+    conf: 0.35
+    classes:
+      concrete: material:concrete
+      steel: material:steel
+      metal_deck: material:metal_deck
+
+  rebar:
+    # YOLO11s fine-tuned on ConRebSeg (CC BY 4.0), scripts/train/*
+    type: yolo
+    optional: true
+    weights: runtime/models/conrebseg-rebar/best.pt
+    conf: 0.3
+    imgsz: 960
+    classes:
+      exposed_bars: material:rebar
+
+  hazard:
+    # Construction Hazard Detection YOLO11n (AGPL-3.0): people / PPE for the scene overview only
+    type: yolo
+    optional: true
+    weights: runtime/models/construction-hazard/yolo11n.pt
+    keep_unmapped: true
+    classes: {}
+
+# DINO proposes, CLIP decides: a zero-shot box survives only if CLIP, looking at the crop, picks
+# the same class among close machine types (eval: drilling rig 42/48 found, 1 false positive).
+verify:
+  # scripts/download_models.py clip-vit-large-patch14; a Hub id also works (needs internet)
+  model: runtime/models/clip-vit-large-patch14
+  sources: [gdino]
+  labels: [drilling_rig, crawler_crane, concrete_pump, loader_crane]
+  min_probability: 0.3
+  descriptions:
+    drilling_rig: a photo of a piling drilling rig with a tall vertical mast
+    crawler_crane: a photo of a crawler crane with a lattice boom
+    mobile_crane: a photo of a mobile truck crane with a telescopic boom
+    tower_crane: a photo of a tower crane
+    excavator: a photo of an excavator
+    dump_truck: a photo of a dump truck
+    concrete_mixer: a photo of a concrete mixer truck
+    concrete_pump: a photo of a concrete pump truck with a folding boom
+    truck: a photo of a flatbed truck
+    loader_crane: a photo of a truck with a hydraulic loader crane
+    wheel_loader: a photo of a wheel loader
+    other: a photo of a building, fence or construction materials
+
+fusion:
+  iou: 0.5
+  conflict_iou: 0.6
+  source_weights:
+    sitesense: 1.0
+    # DINO materials are NOT CLIP-verified and are weak (pilot: rebar P 0.17), so plain DINO keeps 0.85.
+    gdino: 0.85
+    # CLIP-verified DINO boxes carry DINO x CLIP confidence (typically 0.3-0.4), a compressed scale;
+    # 2.0 brings them level with SiteSense so stage inference does not let a 0.9 excavator outweigh a
+    # confirmed drilling rig. Detection P/R is unchanged because the thresholds of these classes
+    # below are scaled by the same factor 2.0/0.85.
+    gdino:drilling_rig: 2.0
+    gdino:crawler_crane: 2.0
+    gdino:concrete_pump: 2.0
+    gdino:loader_crane: 2.0
+    rebar: 1.0
+    materials: 1.0
+  conflict_groups:
+    - [mobile_crane, crawler_crane, tower_crane, drilling_rig, loader_crane]
+    - [dump_truck, truck, concrete_mixer, concrete_pump]
+    - [excavator, wheel_loader, bulldozer, roller]
+  conflict_priority: [drilling_rig, crawler_crane]
+  default_min_confidence: 0.35
+  # Tuned on odd-numbered frames (scripts/eval_detectors.py --tune), reported on even ones.
+  # drilling_rig / crawler_crane were tuned at gdino weight 0.85 (0.15 / 0.2) and rescaled x2.35.
+  # Classes without examples in our set keep the default.
+  min_confidence:
+    drilling_rig: 0.35
+    crawler_crane: 0.47
+    excavator: 0.75
+    tower_crane: 0.4
+    wheel_loader: 0.35
+    concrete_mixer: 0.7
+    dump_truck: 0.85
+    mobile_crane: 0.85
+
+# Minimum share of the frame for a segmented material to count as present.
+coverage_min: 0.03
+
+# Classes whose precision on data/manifests/dgp_images.json is acceptable (see docs/DETECTION_EVAL.md);
+# only these may raise "missing equipment" alerts.
+# A "missing equipment" alert is false whenever the detector misses a machine, so a class is validated
+# only with recall >= 0.85, precision >= 0.75 and >= 20 labelled frames (all 100 frames, see
+# docs/DETECTION_EVAL.md): excavator 0.79/0.98, drilling_rig 0.93/0.88, tower_crane 0.76/0.97.
+# dump_truck (0.67/0.75 on 8 frames) is NOT validated: "excavator without dump trucks" is shown with
+# ground-truth labels but suppressed for detector output until dump-truck recall is confirmed.
+validated_classes: [excavator, drilling_rig, tower_crane]

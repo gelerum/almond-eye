@@ -82,6 +82,17 @@ class Store:
                 return self.serialize(old)
             return self.serialize(doc)
 
+    def update(self, project_id, kind, doc_id, payload):
+        """Mutable documents only (background job progress); everything else stays immutable."""
+        if kind != "job":
+            raise ValueError("Изменять можно только документы фоновых задач")
+        with Session(self.engine) as session, session.begin():
+            doc = session.get(Document, doc_id)
+            if not doc or doc.project_id != project_id or doc.kind != kind:
+                raise KeyError("Запись не найдена на этой площадке")
+            doc.payload = payload
+            return self.serialize(doc)
+
     @staticmethod
     def serialize(doc):
         return {"id":doc.id, "project_id":doc.project_id, "created_at":doc.created_at.isoformat(), **doc.payload}

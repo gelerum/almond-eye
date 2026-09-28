@@ -2,11 +2,14 @@
 import hashlib
 import html
 import json
+import sys
 import statistics
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageOps
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from backend.app.paths import dataset_image  # noqa: E402
 DATA = ROOT / 'data/experiments/materials-20260928'
 WORK = ROOT / 'runtime/experiments/materials-20260928'
 EQUIPMENT = ['excavator','dump_truck','roller','tower_crane','concrete_mixer']
@@ -112,7 +115,7 @@ def main():
     for row in reference['images']:
         stem=Path(row['image']).stem
         number=stem.split('_')[-1]
-        with Image.open(ROOT / row['image']) as source:
+        with Image.open(dataset_image(row['image'])) as source:
             original = source.convert('RGB')
         WORK.mkdir(parents=True, exist_ok=True)
         ImageOps.contain(original, (1000,750)).save(WORK / f'review-{number}.jpg')

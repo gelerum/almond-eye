@@ -1,0 +1,41 @@
+services:
+  app:
+    build:
+      context: .
+      # Сборка в сети хоста: те же DNS и маршруты, что и у хоста.
+      network: host
+      args:
+        INSTALL_DETECTOR: "1"
+        # UID/GID пользователя хоста, чтобы файлы проекта не становились чужими.
+        USER_UID: ${UID:-1000}
+        USER_GID: ${GID:-1000}
+    image: construction-cv:latest
+    container_name: construction-cv
+    # Контейнер живёт в netns хоста (как aorta-pure-hex-meshing): веб сразу на порту хоста,
+    # секция ports в этом режиме не нужна.
+    network_mode: host
+    environment:
+      PORT: "7860"
+      # Ансамбль из backend/app/config/detectors.yaml (модели, пороги, проверенные классы).
+      # Без GPU: TORCH_DEVICE=cpu; тяжёлые адаптеры можно выключить через enabled: false.
+      DETECTOR_PROFILE: ensemble
+      TORCH_DEVICE: "0"
+      UVICORN_ARGS: "--reload"
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility
+    volumes:
+      # Проект с хоста: правки Claude Code сразу видны на хосте и в веб-интерфейсе.
+      - ./:/workspace
+      # Авторизация и настройки Claude Code сохраняются между перезапусками.
+      - claude-home:/home/dev/.claude
+    shm_size: "2gb"
+    # GPU через CDI (NixOS: toolkit пишет спеку в /var/run/cdi и не регистрирует
+    # nvidia как docker runtime, поэтому gpus / deploy не работают). Compose >= 2.30.
+    devices:
+      - nvidia.com/gpu=all
+    stdin_open: true
+    tty: true
+
+volumes:
+  claude-home:

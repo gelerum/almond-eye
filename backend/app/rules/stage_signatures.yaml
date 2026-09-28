@@ -1,0 +1,204 @@
+# Методика «этап работ ← почерк техники и материалов».
+#
+# Этап узнаётся не по одной машине, а по сочетанию. Поля этапа:
+#   name          — название для людей;
+#   order         — типичный порядок (для «виден только предыдущий этап» и для разрешения ничьих);
+#   observable    — false: этап не имеет внешнего почерка техники (отделка, ввод), по снимкам не оценивается;
+#   required      — OR-группы: каждая группа должна быть закрыта хотя бы одним признаком («полный почерк»);
+#   supporting    — признак: вес, повышают уверенность;
+#   contradicting — признак: вес, признаки другой фазы, понижают уверенность;
+#   allowed       — техника, нормальная для этапа, но не указывающая на него (не даёт алерта «техника не по этапу»);
+#   pace_critical — техника, без которой идущий этап замедляется (алерт «риск снижения темпа»);
+#   completed_by  — техника, само присутствие которой означает, что этап уже выполнен (стоящий башенный кран);
+#   plan_keywords — подстроки (в нижнем регистре) названий строк плана / перечня ЛТЦ для привязки к этапу.
+# Признак — значение Equipment (dump_truck, excavator, …) или Material (rebar, formwork, …),
+# см. backend/app/domain/contracts.py.
+#
+# Счёт этапа (backend/app/domain/stage_inference.py), p(x) — присутствие признака 0..1
+# (уверенность детектора; для материалов — max(уверенность, доля кадра / material_coverage_full)):
+#   score = required_weight · (средняя закрытость required-групп) + Σ w·p(supporting) − Σ w·p(contradicting),
+#   обрезается в [0, 1]. Веса подобраны вручную так, чтобы полный почерк давал 0.6–0.95, и проверены
+#   scripts/eval_stage_inference.py на 100 размеченных кадрах (docs/STAGE_METHOD.md).
+
+version: stage-signatures-v1
+required_weight: 0.6
+# Ниже этого счёта кадр считается «этап не распознан» (unknown).
+min_score: 0.3
+# С какого счёта кадр засчитывается доказательством этапа при сравнении с планом (progress.assess).
+# 0.4 выбрано по 65 кадрам демо-площадок на реальных детекторах: при 0.5 проходило 77% кадров
+# (верных 78%), при 0.4 проходит 97% (верных 76%). На эталонной разметке счёт близок к 1.0.
+evidence_score: 0.4
+# Доля кадра под материалом, которая считается уверенным присутствием (сегментация).
+material_coverage_full: 0.10
+# Техника общего назначения: встречается на любом этапе (доставка, разгрузка) и не бывает «не по этапу».
+always_allowed: [truck, loader_crane, mobile_crane]
+
+stages:
+  site_prep:
+    name: Подготовительные работы
+    order: 0
+    # Ограждение, бытовки, снос, временные дороги: автокран, бульдозер, каток, грузовики.
+    # Экскаватор тут тоже бывает (снос, вынос сетей), но в одиночку он гораздо чаще означает котлован,
+    # поэтому он только поддерживающий признак.
+    required: [[bulldozer, mobile_crane, roller, loader_crane, truck]]
+    supporting: {bulldozer: 0.2, excavator: 0.1, truck: 0.05, loader_crane: 0.05}
+    # Буровые, башенный кран и бетон означают, что подготовка уже закончилась.
+    contradicting: {drilling_rig: 0.4, tower_crane: 0.3, concrete_mixer: 0.2, concrete_pump: 0.2,
+                    crawler_crane: 0.2, rebar: 0.2, formwork: 0.2, scaffolding: 0.3}
+    allowed: [excavator, wheel_loader, dump_truck, roller, bulldozer]
+    pace_critical: []
+    plan_keywords: [подготов, снос, расчистк, временн, ограждение площадки, ограждения площадки, вынос сетей]
+
+  piling:
+    name: Шпунтовое ограждение и сваи
+    order: 1
+    # Буровая / сваебойная установка — единственный однозначный признак свай и «стены в грунте».
+    required: [[drilling_rig]]
+    # Бетон подаётся в скважины автобетоносмесителем, каркасы и шпунт ставит гусеничный кран;
+    # экскаватор и погрузчик убирают выбуренный грунт.
+    supporting: {concrete_mixer: 0.2, crawler_crane: 0.15, rebar: 0.1, pipes: 0.15,
+                 excavator: 0.05, wheel_loader: 0.05}
+    # Идущая надземная часть (леса, кладка) несовместима со сваями.
+    contradicting: {scaffolding: 0.3, brickwork: 0.3, metal_deck: 0.2, concrete_pump: 0.1}
+    # Башенный кран в Москве часто ставят до свай (все кадры площадки A) — нормально.
+    allowed: [tower_crane, dump_truck, mobile_crane, crawler_crane]
+    # Без бетоносмесителя сваи бурят, но не бетонируют; при ежемесячной съёмке это слишком шумный
+    # признак, поэтому темп по сваям не контролируем.
+    pace_critical: []
+    plan_keywords: [свай, свае, шпунт, стена в грунте, стены в грунте, ограждение котлована, ограждения котлована]
+
+  excavation:
+    name: Разработка котлована
+    order: 2
+    # Экскаватор — обязательный признак; самосвалы — вывоз грунта (пример из ТЗ).
+    required: [[excavator]]
+    supporting: {dump_truck: 0.3, bulldozer: 0.15, wheel_loader: 0.1}
+    # Буровые в кадре — скорее идут сваи (экскаватор вспомогательный); бетон и арматура — уже фундамент.
+    contradicting: {drilling_rig: 0.25, concrete_mixer: 0.15, concrete_pump: 0.25, rebar: 0.15,
+                    formwork: 0.15, scaffolding: 0.3, brickwork: 0.3}
+    allowed: [tower_crane, crawler_crane, mobile_crane]
+    # Экскаватор без самосвалов — грунт некуда вывозить, темп падает (пример из ТЗ).
+    pace_critical: [dump_truck]
+    plan_keywords: [котлован, земляные, разработка грунта, выемк, грунта]
+
+  foundation:
+    name: Фундаменты и ростверки
+    order: 3
+    # Бетонирование плиты / ростверков: автобетоносмеситель или бетононасос.
+    required: [[concrete_mixer, concrete_pump]]
+    # Плиту часто бетонируют насосом без башенного крана, поэтому кран даёт лишь слабый вклад.
+    supporting: {concrete_pump: 0.15, tower_crane: 0.05, rebar: 0.25, formwork: 0.2, concrete: 0.15,
+                 mobile_crane: 0.05}
+    # Буровые — ещё сваи; леса и кладка — уже надземная часть; самосвалы — ещё котлован.
+    contradicting: {drilling_rig: 0.35, dump_truck: 0.1, scaffolding: 0.2, brickwork: 0.2}
+    allowed: [excavator, tower_crane, crawler_crane, wheel_loader]
+    # Без бетона фундамент не растёт.
+    pace_critical: [concrete_mixer, concrete_pump]
+    plan_keywords: [фундамент, ростверк, фундаментн, плита основания]
+
+  underground:
+    name: Подземная часть (цокольный этаж)
+    order: 4
+    # Стены и перекрытия подземной части: башенный кран + бетон/арматура/опалубка.
+    # Экскаватор тут часто ещё дорабатывает пазухи котлована.
+    required: [[tower_crane], [concrete_mixer, concrete_pump, rebar, formwork, concrete]]
+    supporting: {excavator: 0.1, concrete_pump: 0.1, rebar: 0.1, formwork: 0.1, mobile_crane: 0.05}
+    contradicting: {drilling_rig: 0.35, dump_truck: 0.05, scaffolding: 0.15, brickwork: 0.2}
+    allowed: [excavator, wheel_loader, crawler_crane, dump_truck]
+    pace_critical: [concrete_mixer, concrete_pump]
+    plan_keywords: [цокольн, подземн, подвал, стилобат]
+
+  tower_crane_install:
+    name: Установка башенного крана
+    order: 5
+    # Башенный кран монтируют автокраном (реже гусеничным) — оба крана в одном кадре.
+    required: [[mobile_crane, crawler_crane], [tower_crane]]
+    supporting: {truck: 0.1, loader_crane: 0.1}
+    # Идущее бурение или вывоз грунта объясняют автокран иначе.
+    contradicting: {drilling_rig: 0.3, excavator: 0.15, dump_truck: 0.15, scaffolding: 0.2, brickwork: 0.2}
+    allowed: [truck, loader_crane]
+    pace_critical: []
+    # Башенный кран, стоящий на снимке, означает, что установка уже выполнена, даже если сам монтаж
+    # (автокран рядом) в кадр не попал.
+    completed_by: [tower_crane]
+    plan_keywords: [установка башенн, монтаж башенн]
+
+  superstructure:
+    name: Монтаж надземной части
+    order: 6
+    # Растущий каркас: башенный кран + леса, опалубка перекрытий, ж/б плиты, кладка, металл.
+    required: [[tower_crane]]
+    supporting: {scaffolding: 0.25, formwork: 0.1, precast_slabs: 0.2, brickwork: 0.15, steel: 0.15,
+                 metal_deck: 0.15, concrete_pump: 0.1, concrete: 0.1}
+    # Землеройная техника и буровые — работы нулевого цикла.
+    # Гусеничный кран работает на нулевом цикле (сваи, тяжёлый монтаж), на каркасе — башенный.
+    # Автокран рядом с башенным без признаков каркаса — это монтаж самого крана (слайд 2).
+    contradicting: {excavator: 0.3, drilling_rig: 0.4, dump_truck: 0.2, crawler_crane: 0.3, mobile_crane: 0.15}
+    allowed: [concrete_mixer, concrete_pump, mobile_crane]
+    pace_critical: []
+    plan_keywords: [надземн, каркас, типов, перекрыти, монолитн]
+
+  facade_roof:
+    name: Фасад, кровля, окна
+    order: 7
+    # Леса, кладка и профнастил без землеройной техники; материал подают краны-манипуляторы.
+    required: [[scaffolding, brickwork, metal_deck]]
+    supporting: {loader_crane: 0.15, mobile_crane: 0.1, tower_crane: 0.05, truck: 0.05}
+    contradicting: {excavator: 0.2, drilling_rig: 0.4, dump_truck: 0.1, concrete_pump: 0.1}
+    allowed: [tower_crane, loader_crane, mobile_crane]
+    pace_critical: []
+    plan_keywords: [кровл, фасад, окон, окна, остеклен, витраж]
+
+  external_networks:
+    name: Наружные сети
+    order: 8
+    # Траншеи под НВК и ТС: экскаватор + трубы, которые разгружает манипулятор.
+    required: [[excavator], [pipes, loader_crane]]
+    supporting: {pipes: 0.2, dump_truck: 0.05, truck: 0.05}
+    contradicting: {drilling_rig: 0.3, tower_crane: 0.1, concrete_pump: 0.1, crawler_crane: 0.1}
+    allowed: [wheel_loader, dump_truck, mobile_crane]
+    pace_critical: []
+    plan_keywords: [сети, сетей, нвк, коммуникац, водопровод, канализац, теплосет]
+
+  landscaping:
+    name: Благоустройство и дороги
+    order: 9
+    # Дороги и благоустройство узнаём по катку. Погрузчик и бульдозер встречаются на любом этапе
+    # (одиночный погрузчик на площадке C во время свай), поэтому они лишь поддерживают.
+    required: [[roller]]
+    supporting: {wheel_loader: 0.2, bulldozer: 0.15, dump_truck: 0.1, truck: 0.05}
+    # Работы нулевого цикла и тяжёлые краны означают, что до благоустройства далеко.
+    contradicting: {drilling_rig: 0.4, crawler_crane: 0.3, tower_crane: 0.2, concrete_pump: 0.2,
+                    excavator: 0.1, rebar: 0.1, formwork: 0.1}
+    allowed: [excavator, loader_crane, truck, dump_truck, wheel_loader, bulldozer]
+    pace_critical: []
+    plan_keywords: [благоустр, озелен, дорожн, дорог, асфальт, покрыти]
+
+  tower_crane_dismantle:
+    name: Демонтаж башенного крана
+    order: 10
+    # Тот же почерк, что у установки (автокран + башенный кран), но на фоне готового здания.
+    # По одному кадру установку и демонтаж различает только этот фон, поэтому для демонтажа
+    # обязателен третий признак — леса, кладка или профнастил. Без материалов (эталонная разметка
+    # содержит только технику) демонтаж не распознаётся — лучше промолчать, чем «увидеть» его в котловане.
+    required: [[mobile_crane, crawler_crane], [tower_crane], [scaffolding, brickwork, metal_deck, precast_slabs]]
+    supporting: {truck: 0.05}
+    contradicting: {drilling_rig: 0.4, excavator: 0.25, dump_truck: 0.2, concrete_mixer: 0.1}
+    allowed: [truck, loader_crane]
+    pace_critical: []
+    plan_keywords: [демонтаж башенн]
+
+  interior:
+    name: Внутренние работы
+    order: 11
+    # Лифты, инженерные системы, отделка идут внутри здания и с камер площадки не видны.
+    observable: false
+    required: []
+    plan_keywords: [лифт, внутренн, отделк, инженерн]
+
+  commissioning:
+    name: Ввод объекта
+    order: 12
+    observable: false
+    required: []
+    plan_keywords: [ввод, сдача, приёмк, приемк]

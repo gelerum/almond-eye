@@ -2,6 +2,8 @@ from copy import deepcopy
 from datetime import datetime
 from pathlib import Path
 
+from backend.app.paths import WORK_CATALOG_XLSX
+
 import pytest
 
 from backend.app.domain.contracts import CalculationRequest, Equipment, ImportOptions, Observation, Stage, Zone
@@ -39,7 +41,7 @@ def result(obs=None,plan=None,zone=None):
 
 
 def test_customer_excel_restores_numbers_without_inventing_dates():
-    file=next(Path('.').glob('*.xlsx'))
+    file=WORK_CATALOG_XLSX
     p=preview_import(file.read_bytes(),file.name,ImportOptions(recover_date_numbers=True))
     assert len(p.stages)==377
     assert sum(i.code=='date_in_number' for i in p.issues)==19

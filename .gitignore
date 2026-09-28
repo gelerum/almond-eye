@@ -13,4 +13,14 @@ tmp/
 
 .dvc/config
 7.ДГП_датасеты
+# Материалы организатора и внешние датасеты не храним в git: см. README «Данные»
+data/raw/dgp/
 7.ДГП_датасеты.zip
+
+# Секреты DVC remote
+data/config
+# Ultralytics auto-downloads base weights into the cwd
+/*.pt
+
+# PDF документации содержит логин и пароль к прототипу: в открытый репозиторий не кладём
+/Almond_Eye_документация.pdf

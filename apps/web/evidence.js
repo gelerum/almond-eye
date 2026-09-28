@@ -5,7 +5,13 @@ export const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g,
 export const equipmentNames = {
   dump_truck:'Самосвал', excavator:'Экскаватор', roller:'Каток',
   loader_crane:'Кран-манипулятор', concrete_mixer:'Бетоносмеситель',
-  bulldozer:'Бульдозер', truck:'Грузовик', mobile_crane:'Автокран'
+  bulldozer:'Бульдозер', truck:'Грузовик', mobile_crane:'Автокран',
+  tower_crane:'Башенный кран', crawler_crane:'Гусеничный кран', drilling_rig:'Буровая / сваебойная установка',
+  wheel_loader:'Погрузчик', concrete_pump:'Автобетононасос'
+};
+export const materialNames = {
+  rebar:'Арматура', formwork:'Опалубка', scaffolding:'Леса', pipes:'Трубы / шпунт', precast_slabs:'Ж/б плиты',
+  brickwork:'Кирпичная кладка', concrete:'Бетон', steel:'Металлоконструкции', metal_deck:'Профнастил'
 };
 export const statusNames = {
   warning:'Предупреждение', insufficient_data:'Недостаточно данных',
@@ -66,4 +72,22 @@ export function renderEvidence(evaluation, sourceUrl) {
     <a href="${escapeHtml(sourceUrl)}" target="_blank" rel="noreferrer">Открыть исходный снимок</a>
     <p class="muted">Модель: ${escapeHtml(evaluation.model_version)}<br>Версия графика: ${escapeHtml(evaluation.schedule_id || 'не выбрана')}</p>
   </div>`;
+}
+
+const pct = v => `${(Math.min(1, Math.max(0, Number(v) || 0))*100).toFixed(2)}%`;
+// Boxes over a photo: rectangles in a stretched 0–1000 SVG, labels as HTML chips so text is never distorted.
+// box: {bbox:[x1,y1,x2,y2] normalised, label, confidence, kind:'equipment'|'material'}
+export function renderBoxOverlay(boxes) {
+  const valid = (boxes || []).filter(b => Array.isArray(b.bbox) && b.bbox.length === 4);
+  const rects = valid.map(b => {
+    const [x1,y1,x2,y2] = b.bbox.map(Number);
+    const text = `${b.label} · ${Math.round((b.confidence ?? 0)*100)}%`;
+    return `<rect class="box-${b.kind === 'material' ? 'material' : 'equipment'}" x="${(x1*1000).toFixed(1)}" y="${(y1*1000).toFixed(1)}" width="${((x2-x1)*1000).toFixed(1)}" height="${((y2-y1)*1000).toFixed(1)}"><title>${escapeHtml(text)}</title></rect>`;
+  }).join('');
+  const chips = valid.map(b => {
+    const [x1,y1] = b.bbox;
+    const text = `${b.label} · ${Math.round((b.confidence ?? 0)*100)}%`;
+    return `<span class="box-label box-label-${b.kind === 'material' ? 'material' : 'equipment'}" style="left:${pct(x1)};top:${pct(y1)}">${escapeHtml(text)}</span>`;
+  }).join('');
+  return `<svg class="box-overlay" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">${rects}</svg>${chips}`;
 }

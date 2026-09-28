@@ -1,8 +1,45 @@
 <!doctype html>
-<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Контур · мониторинг стройплощадки</title><link rel="stylesheet" href="/assets/style.css"><script type="module" src="/assets/app.js"></script></head>
-<body><aside><div class="brand">К<span>▧</span>НТУР</div><p>Мониторинг стройплощадки</p><nav><a href="#setup">01 · Площадка и зоны</a><a href="#import">02 · Перечень работ</a><a href="#schedule">03 · График и источники</a><a href="#images">04 · Снимки</a><a href="#history">05 · Результаты</a></nav><small>Первая итерация P0<br>Локальный прототип</small></aside>
-<main><header><div><div class="eyebrow">КОНТРОЛЬ СТРОИТЕЛЬСТВА</div><h1>От плана к наблюдениям</h1><p>Подготовьте график, обозначьте зону и сохраните снимки для проверки.</p></div><span class="badge">P0 · в разработке</span></header>
-<div id="detector-status" class="notice" role="status">Проверка готовности детектора…</div><div id="message" role="status" aria-live="polite"></div>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Almond Eye · мониторинг стройплощадки</title><link rel="stylesheet" href="/assets/style.css"><script type="module" src="/assets/app.js"></script><script type="module" src="/assets/status-view.js"></script></head>
+<body><aside><a class="brand" href="#/objects">Almond<span>◉</span>Eye</a><p>Успеваем ли мы по графику?</p>
+<nav><a href="#/objects" data-nav="objects">Объекты</a><a href="#/new" data-nav="new" class="nav-new">+ Новый объект</a></nav>
+<div id="nav-projects" class="nav-projects"></div>
+<small><a href="#/advanced">Расширенные настройки</a><a href="/docs" target="_blank" rel="noopener">API</a></small></aside>
+<main>
+<div id="message" role="status" aria-live="polite"></div>
+<p id="st-mock" class="notice" hidden>Демо-режим: данные из <code>mock-status.json</code>, загрузка на сервер отключена.</p>
+
+<div id="view-objects" class="view" hidden>
+<div class="page-head"><div><h1>Объекты</h1><p class="muted">Статус каждого объекта на дату последнего снимка.</p></div><a class="button" href="#/new">+ Новый объект</a></div>
+<div id="objects-grid" class="objects-grid"></div>
+</div>
+
+<div id="view-new" class="view" hidden>
+<a class="back" href="#/objects">← К объектам</a>
+<div class="page-head"><div><h1>Новый объект</h1><p class="muted">Три шага: название, календарный план, снимки с камер.</p></div></div>
+<ol class="stepper" id="wizard-steps"><li data-step="1">Объект</li><li data-step="2">План</li><li data-step="3">Снимки</li></ol>
+<section class="card wizard-step" data-step="1"><h2>Как называется объект?</h2>
+<form id="wizard-name" class="stack"><label>Название<input name="name" required maxlength="200" placeholder="Например: ЖК «Мичуринский», корпус 2" autocomplete="off"></label><button>Далее</button></form></section>
+<section class="card wizard-step" data-step="2" hidden><h2>Календарный план</h2><div id="wizard-plan"></div></section>
+<section class="card wizard-step" data-step="3" hidden><h2>Снимки с камер</h2><div id="wizard-photos"></div></section>
+</div>
+
+<div id="view-status" class="view" hidden>
+<a class="back" href="#/objects">← К объектам</a>
+<div class="st-head"><div><h1 id="st-title">Объект</h1><p class="muted" id="st-subtitle"></p></div>
+<form id="st-controls" class="st-controls"><label hidden>План<select id="st-plan"></select></label><label>Статус на дату<input type="date" id="st-date"></label>
+<button type="button" class="secondary" id="st-add-photos">+ Снимки</button><button type="button" class="secondary" id="st-replace-plan">Обновить план</button></form></div>
+<div id="st-dashboard">
+<div class="st-top"><div id="st-verdict"></div><section class="card st-alerts"><div class="card-title"><h2>Что требует внимания <span id="st-alert-count" class="count"></span></h2></div><div id="st-alerts"></div></section></div>
+<section class="card"><div class="card-title"><h2>План и факт</h2>
+<div class="legend" aria-label="Легенда"><span><i class="lg-plan"></i>план</span><span><i class="lg-fact"></i>факт по снимкам</span><span><i class="lg-today"></i>выбранная дата</span><span class="lg-dots">уверенность: <i class="g-dot-sw lvl-lo"></i>низкая <i class="g-dot-sw lvl-mid"></i>средняя <i class="g-dot-sw lvl-hi"></i>высокая</span></div></div>
+<div id="st-gantt" class="gantt"></div><p class="hint">Каждая точка — снимок. Нажмите на неё, чтобы увидеть найденную технику.</p></section>
+<section class="card"><div class="card-title"><h2>Этапы</h2></div><div id="st-stages"></div></section>
+</div>
+</div>
+
+<dialog id="modal" aria-labelledby="modal-title"><div class="viewer-head"><h2 id="modal-title"></h2><button type="button" class="ghost" data-close aria-label="Закрыть">✕</button></div><div id="modal-body"></div></dialog>
+<dialog id="st-viewer" aria-labelledby="st-viewer-title"><div class="viewer-head"><h2 id="st-viewer-title">Снимок</h2><button type="button" id="st-viewer-close" class="ghost" aria-label="Закрыть">✕</button></div><div id="st-viewer-body"></div></dialog>
+<div id="view-setup" class="view" hidden><a class="back" href="#/objects">← К объектам</a><p class="notice">Расширенные настройки для инженеров: ручная разметка зон, перечень работ ЛТЦ, CSV-графики и покадровая проверка правил. Для обычной работы они не нужны.</p><div id="detector-status" class="notice" role="status">Проверка готовности детектора…</div><header><div><div class="eyebrow">КОНТРОЛЬ СТРОИТЕЛЬСТВА</div><h1>От плана к наблюдениям</h1><p>Подготовьте график, обозначьте зону и сохраните снимки для проверки.</p></div></header>
 <section id="setup"><div class="section-title"><h2>Площадка и наблюдение</h2><span>01</span></div><div class="grid"><form id="project-form"><h3>Площадка</h3><label>Текущая площадка<select id="project-select"></select></label><label>Название<input name="name" placeholder="Строительная площадка" required></label><label>Часовой пояс<input name="timezone" value="Europe/Moscow" required></label><button>Создать площадку</button></form><form id="camera-form"><h3>Камера</h3><label>Название<input name="name" placeholder="Камера 1 · котлован" required></label><button>Добавить камеру</button><div id="cameras" class="muted"></div></form><form id="zone-form"><h3>Зона наблюдения</h3><label>Название<input name="name" value="Котлован" required></label><label>Камера<select id="zone-camera"></select></label><label>Вершины полигона, координаты 0–1<textarea name="polygon" rows="3">[[0.05,0.05],[0.95,0.05],[0.95,0.95],[0.05,0.95]]</textarea></label><label class="check"><input type="checkbox" name="coverage">Покрытие зоны проверено по кадру</label><button>Сохранить зону</button><div id="zones" class="muted"></div></form></div></section>
 <section id="import"><div class="section-title"><h2>Перечень работ</h2><span>02</span></div><p class="muted">Загрузите CSV или XLSX. В исходном перечне календарных дат нет: 10.1 — номер раздела работ. Оригинальный файл остаётся неизменным.</p><form id="import-form"><div class="grid"><label>Файл<input type="file" name="file" accept=".csv,.xlsx" required></label><label>Лист XLSX<input name="sheet" placeholder="Первый лист"></label><label>Строка заголовков<input type="number" name="header_row" min="1" value="3" required></label></div><div class="grid mapping"><label>Столбец номера<input type="number" name="id_column" min="1" value="1" required></label><label>Столбец названия<input type="number" name="name_column" min="1" value="2" required></label><label>Родитель (необязательно)<input type="number" name="parent_column" min="1"></label><label>Начало (необязательно)<input type="number" name="start_column" min="1"></label><label>Окончание (необязательно)<input type="number" name="end_column" min="1"></label></div><label class="check"><input type="checkbox" name="recover" checked>Нормализовать номера разделов, которые Excel хранит в формате даты</label><button>Предпросмотр</button></form><div id="import-preview"></div><div id="import-confirm" hidden><label class="check"><input id="accept-warnings" type="checkbox">Проверены восстановленные номера и предложенная иерархия</label><button id="save-import">Сохранить версию перечня</button></div></section>
 <section id="schedule"><div class="section-title"><h2>График и источники</h2><span>03</span></div><form id="timeline-form"><h3>Загрузить сроки отдельно</h3>
@@ -21,4 +58,4 @@
 <label>Зона этой камеры (необязательно)<select id="analysis-zone"></select></label></div>
 <p class="muted">Обзор людей, техники, транспорта, СИЗ и конусов доступен без графика и времени снимка. Анализ выполняется на CPU. Активный этап определяется по времени снимка и графику; предсказание классификатора этапов его не заменяет.</p>
 <button id="run-analysis" disabled>Запустить анализ</button><p id="analysis-state" role="status" aria-live="polite"></p></form></section>
-<section id="history"><div class="section-title"><h2>История проверок</h2><span>05</span></div><p class="muted">Присутствие техники не доказывает выполнение работ. Нет данных и соответствие наблюдениям — разные состояния.</p><div class="grid"><label>Статус графика в последних 50 результатах<select id="result-status"><option value="">Все статусы</option><option value="warning">Предупреждения</option><option value="insufficient_data">Недостаточно данных</option><option value="matches_observations">Соответствует наблюдениям</option></select></label><label>Сигналы обзора<select id="result-scene"><option value="">Все результаты</option><option value="needs_review">Есть кандидаты на проверку</option></select></label><label>Режим<select id="result-mode"><option value="">Все</option><option value="model">Модель</option><option value="fixture">Тестовые детекции</option></select></label></div><div id="evaluations"></div></section><footer>Контракты и тестовый запуск правил: <a href="/docs">API-документация</a></footer></main></body></html>
+<section id="history"><div class="section-title"><h2>История проверок</h2><span>05</span></div><p class="muted">Присутствие техники не доказывает выполнение работ. Нет данных и соответствие наблюдениям — разные состояния.</p><div class="grid"><label>Статус графика в последних 50 результатах<select id="result-status"><option value="">Все статусы</option><option value="warning">Предупреждения</option><option value="insufficient_data">Недостаточно данных</option><option value="matches_observations">Соответствует наблюдениям</option></select></label><label>Сигналы обзора<select id="result-scene"><option value="">Все результаты</option><option value="needs_review">Есть кандидаты на проверку</option></select></label><label>Режим<select id="result-mode"><option value="">Все</option><option value="model">Модель</option><option value="fixture">Тестовые детекции</option></select></label></div><div id="evaluations"></div></section></div></main></body></html>

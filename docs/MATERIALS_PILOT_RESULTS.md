@@ -78,13 +78,13 @@
 Из корня проекта, в существующем окружении проекта:
 
 ```powershell
-./.venv/Scripts/python.exe -m pip install --no-deps --target runtime/experiments/materials-20260928/packages -r requirements.experiment.txt
-./.venv/Scripts/python.exe scripts/download_experiment_models.py
-./.venv/Scripts/python.exe -X utf8 scripts/run_materials_pilot.py --model sitesense
-./.venv/Scripts/python.exe -X utf8 scripts/run_materials_pilot.py --model hazard
-./.venv/Scripts/python.exe -X utf8 scripts/run_materials_pilot.py --model grounding-dino
-./.venv/Scripts/python.exe -X utf8 scripts/run_materials_pilot.py --model grounding-materials
-./.venv/Scripts/python.exe -X utf8 scripts/summarize_materials_pilot.py
+uv sync --extra experiment
+uv run scripts/download_models.py sitesense grounding-dino-tiny
+uv run python -X utf8 scripts/run_materials_pilot.py --model sitesense
+uv run python -X utf8 scripts/run_materials_pilot.py --model hazard
+uv run python -X utf8 scripts/run_materials_pilot.py --model grounding-dino
+uv run python -X utf8 scripts/run_materials_pilot.py --model grounding-materials
+uv run python -X utf8 scripts/summarize_materials_pilot.py
 ```
 
 Downloader использует сохранённые ревизии и сверяет SHA-256. Inference работает offline, без загрузки пользовательских снимков на сервер. Повторный запуск пропускает готовые кадры; для нового измерения сначала сохраните/переименуйте соответствующий JSON результата. Галерея ссылается на локальные JPG в runtime, поэтому для переноса нужны и её изображения. Проверка корректности расчёта учитывает неизвестные метки и отсутствие положительных примеров; полный pytest: 44 passed.

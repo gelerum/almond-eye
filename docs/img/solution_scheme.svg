@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1840" height="810" viewBox="40 160 1840 810" font-family="Liberation Sans, DejaVu Sans, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#520978"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#310F53" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+  <rect x="40" y="160" width="1840" height="810" fill="#FFFFFF"/>
+
+
+  <!-- ===== inputs ===== -->
+  <text x="70" y="212" font-size="18" font-weight="700" fill="#8A83D1" letter-spacing="2">ВХОД</text>
+  <g filter="url(#shadow)">
+    <rect x="70" y="230" width="250" height="150" rx="14" fill="#fff" stroke="#8A83D1" stroke-opacity="0.45"/>
+    <rect x="70" y="580" width="250" height="150" rx="14" fill="#fff" stroke="#8A83D1" stroke-opacity="0.45"/>
+  </g>
+  <!-- camera icon -->
+  <rect x="96" y="256" width="46" height="32" rx="6" fill="#520978"/><circle cx="119" cy="272" r="9" fill="#FFFFFF"/><circle cx="119" cy="272" r="4.5" fill="#520978"/>
+  <text x="96" y="325" font-size="24" font-weight="700" fill="#1C1D22">Фото с камер</text>
+  <text x="96" y="356" font-size="19" fill="#1C1D22" fill-opacity="0.68">+ дата съёмки</text>
+  <!-- plan icon -->
+  <rect x="96" y="604" width="46" height="36" rx="5" fill="#fff" stroke="#520978" stroke-width="2.5"/>
+  <rect x="103" y="612" width="22" height="6" rx="2" fill="#8A83D1"/><rect x="110" y="622" width="26" height="6" rx="2" fill="#520978"/><rect x="118" y="632" width="18" height="4" rx="2" fill="#8A83D1"/>
+  <text x="96" y="676" font-size="22" font-weight="700" fill="#1C1D22">Календарный план</text>
+  <text x="96" y="707" font-size="19" fill="#1C1D22" fill-opacity="0.68">Excel, шаблон ДГП</text>
+
+  <!-- ===== step 1 ===== -->
+  <g filter="url(#shadow)"><rect x="380" y="180" width="440" height="700" rx="18" fill="#fff" stroke="#8A83D1" stroke-opacity="0.45"/></g>
+  <circle cx="420" cy="228" r="22" fill="#520978"/><text x="420" y="237" font-size="24" font-weight="700" fill="#fff" text-anchor="middle">1</text>
+  <text x="456" y="237" font-size="28" font-weight="700" fill="#310F53">Находим технику</text>
+
+  <rect x="406" y="276" width="388" height="118" rx="12" fill="#8A83D1" fill-opacity="0.14"/>
+  <text x="428" y="312" font-size="21" font-weight="700" fill="#1C1D22">SiteSense · YOLO</text>
+  <text x="428" y="344" font-size="18" fill="#1C1D22" fill-opacity="0.72">экскаваторы, самосвалы, краны,</text>
+  <text x="428" y="370" font-size="18" fill="#1C1D22" fill-opacity="0.72">катки, погрузчики</text>
+
+  <rect x="406" y="408" width="388" height="146" rx="12" fill="#8A83D1" fill-opacity="0.14"/>
+  <text x="428" y="444" font-size="21" font-weight="700" fill="#1C1D22">Grounding DINO + CLIP</text>
+  <text x="428" y="476" font-size="18" fill="#1C1D22" fill-opacity="0.72">буровые установки, гусеничные</text>
+  <text x="428" y="502" font-size="18" fill="#1C1D22" fill-opacity="0.72">краны — их нет в открытых датасетах</text>
+  <rect x="428" y="516" width="228" height="26" rx="13" fill="#520978"/>
+  <text x="542" y="535" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">без ручной разметки</text>
+
+  <rect x="406" y="568" width="388" height="118" rx="12" fill="#8A83D1" fill-opacity="0.14"/>
+  <text x="428" y="604" font-size="21" font-weight="700" fill="#1C1D22">YOLO, дообученные нами</text>
+  <text x="428" y="636" font-size="18" fill="#1C1D22" fill-opacity="0.72">арматура, бетон, металл</text>
+  <text x="428" y="662" font-size="18" fill="#1C1D22" fill-opacity="0.72">(открытые датасеты)</text>
+
+  <!-- merge -->
+  <path d="M600 700 L600 730" stroke="#520978" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect x="406" y="740" width="388" height="112" rx="12" fill="#310F53"/>
+  <text x="428" y="778" font-size="21" font-weight="700" fill="#fff">Слияние моделей</text>
+  <text x="428" y="808" font-size="18" fill="#FFD6E4">видят одно и то же → уверенность</text>
+  <text x="428" y="834" font-size="18" fill="#FFD6E4">выше; спорное перепроверяется</text>
+
+  <!-- ===== step 2 ===== -->
+  <g filter="url(#shadow)"><rect x="880" y="180" width="420" height="700" rx="18" fill="#fff" stroke="#8A83D1" stroke-opacity="0.45"/></g>
+  <circle cx="920" cy="228" r="22" fill="#520978"/><text x="920" y="237" font-size="24" font-weight="700" fill="#fff" text-anchor="middle">2</text>
+  <text x="956" y="237" font-size="28" font-weight="700" fill="#310F53">Определяем этап</text>
+  <text x="906" y="284" font-size="19" fill="#1C1D22" fill-opacity="0.68">по сочетанию техники,</text><text x="906" y="310" font-size="19" fill="#1C1D22" fill-opacity="0.68">а не по одной машине</text>
+
+  <g font-size="19">
+    <rect x="906" y="336" width="368" height="84" rx="12" fill="#8A83D1" fill-opacity="0.14"/>
+    <text x="926" y="370" fill="#1C1D22">экскаватор + самосвалы</text>
+    <text x="926" y="402" font-weight="700" fill="#520978">→ котлован</text>
+    <rect x="906" y="434" width="368" height="84" rx="12" fill="#8A83D1" fill-opacity="0.14"/>
+    <text x="926" y="468" fill="#1C1D22">буровые + бетоносмеситель</text>
+    <text x="926" y="500" font-weight="700" fill="#520978">→ сваи</text>
+    <rect x="906" y="532" width="368" height="84" rx="12" fill="#8A83D1" fill-opacity="0.14"/>
+    <text x="926" y="566" fill="#1C1D22">башенный кран + арматура</text>
+    <text x="926" y="598" font-weight="700" fill="#520978">→ фундамент, каркас</text>
+    <rect x="906" y="630" width="368" height="84" rx="12" fill="#8A83D1" fill-opacity="0.14"/>
+    <text x="926" y="664" fill="#1C1D22">каток + самосвалы</text>
+    <text x="926" y="696" font-weight="700" fill="#520978">→ дороги, благоустройство</text>
+  </g>
+  <rect x="906" y="740" width="368" height="112" rx="12" fill="none" stroke="#520978" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="926" y="778" font-size="21" font-weight="700" fill="#1C1D22">Правила — открытый файл</text>
+  <text x="926" y="808" font-size="18" fill="#1C1D22" fill-opacity="0.72">инженер правит сам; к каждому</text>
+  <text x="926" y="834" font-size="18" fill="#1C1D22" fill-opacity="0.72">выводу есть объяснение</text>
+
+  <!-- ===== step 3 ===== -->
+  <g filter="url(#shadow)"><rect x="1360" y="180" width="490" height="700" rx="18" fill="#fff" stroke="#8A83D1" stroke-opacity="0.45"/></g>
+  <circle cx="1400" cy="228" r="22" fill="#520978"/><text x="1400" y="237" font-size="24" font-weight="700" fill="#fff" text-anchor="middle">3</text>
+  <text x="1436" y="237" font-size="28" font-weight="700" fill="#310F53">Сверяем с планом</text>
+  <text x="1386" y="284" font-size="19" fill="#1C1D22" fill-opacity="0.68">первое и последнее появление этапа</text>
+  <text x="1386" y="310" font-size="19" fill="#1C1D22" fill-opacity="0.68">на снимках против плановых дат</text>
+
+  <!-- mini gantt -->
+  <g font-size="15" fill="#8A83D1">
+    <text x="1476" y="354">апр</text><text x="1556" y="354">май</text><text x="1636" y="354">июн</text><text x="1716" y="354">июл</text>
+  </g>
+  <line x1="1466" y1="362" x2="1824" y2="362" stroke="#8A83D1" stroke-opacity="0.45"/>
+  <text x="1386" y="398" font-size="17" fill="#1C1D22">Сваи</text>
+  <rect x="1466" y="384" width="120" height="18" rx="5" fill="#8A83D1" fill-opacity="0.45"/>
+  <circle cx="1490" cy="393" r="6" fill="#520978"/><circle cx="1540" cy="393" r="6" fill="#520978"/><circle cx="1578" cy="393" r="6" fill="#520978"/>
+  <text x="1386" y="446" font-size="17" font-weight="700" fill="#FF0053">Котлован</text>
+  <rect x="1546" y="432" width="112" height="18" rx="5" fill="#FFD6E4" stroke="#FF0053" stroke-width="2"/>
+  <line x1="1660" y1="441" x2="1742" y2="441" stroke="#1C1D22" stroke-width="3"/>
+  <circle cx="1690" cy="441" r="6" fill="#520978"/><circle cx="1742" cy="441" r="6" fill="#310F53"/>
+  <line x1="1742" y1="370" x2="1742" y2="478" stroke="#FF0053" stroke-width="2" stroke-dasharray="5 4"/>
+  <path d="M1662 468 L1740 468" stroke="#FF0053" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="1700" y="496" font-size="17" font-weight="700" fill="#FF0053" text-anchor="middle">+34 дня</text>
+  <g font-size="14" fill="#1C1D22" fill-opacity="0.68">
+    <rect x="1386" y="520" width="18" height="10" rx="3" fill="#8A83D1" fill-opacity="0.45"/><text x="1412" y="530">план</text>
+    <circle cx="1480" cy="525" r="5" fill="#520978"/><text x="1492" y="530">снимок с распознанным этапом</text>
+  </g>
+
+  <!-- outcomes -->
+  <text x="1386" y="584" font-size="18" font-weight="700" fill="#8A83D1" letter-spacing="2">ВЕРДИКТ</text>
+  <rect x="1386" y="600" width="438" height="70" rx="12" fill="#FFD6E4" stroke="#FF0053" stroke-width="2"/>
+  <circle cx="1422" cy="635" r="18" fill="#FF0053"/><path d="M1413 629 L1431 629 L1422 643 z" fill="#fff"/>
+  <text x="1452" y="645" font-size="28" font-weight="700" fill="#1C1D22">Отстаём на 34 дня</text>
+  <g font-size="17" font-weight="700">
+    <rect x="1386" y="686" width="138" height="36" rx="18" fill="#8A83D1" fill-opacity="0.22"/><text x="1455" y="710" fill="#520978" text-anchor="middle">в графике</text>
+    <rect x="1534" y="686" width="138" height="36" rx="18" fill="#8A83D1"/><text x="1603" y="710" fill="#FFFFFF" text-anchor="middle">опережаем</text>
+    <rect x="1682" y="686" width="142" height="36" rx="18" fill="#FFFFFF" stroke="#FC3777" stroke-width="2"/><text x="1753" y="710" fill="#FC3777" text-anchor="middle">риск темпа</text>
+  </g>
+  <rect x="1386" y="740" width="438" height="112" rx="12" fill="#310F53"/>
+  <text x="1408" y="778" font-size="21" font-weight="700" fill="#fff">+ фото-доказательство</text>
+  <text x="1408" y="808" font-size="18" fill="#FFD6E4">снимок с рамками найденной техники</text>
+  <text x="1408" y="834" font-size="18" fill="#FFD6E4">и объяснение: «вижу …, значит …»</text>
+
+  <!-- ===== flow arrows ===== -->
+  <path d="M320 305 L372 305" stroke="#520978" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M820 530 L872 530" stroke="#520978" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M1300 530 L1352 530" stroke="#520978" stroke-width="3" marker-end="url(#arrow)"/>
+  <!-- plan goes straight to step 3, under the steps -->
+  <path d="M195 730 L195 930 L1605 930 L1605 888" fill="none" stroke="#520978" stroke-width="3" stroke-dasharray="10 7" marker-end="url(#arrow)"/>
+  <rect x="780" y="914" width="420" height="32" rx="16" fill="#FFFFFF"/>
+  <text x="990" y="937" font-size="18" fill="#520978" text-anchor="middle">плановые сроки этапов</text>
+
+</svg>
