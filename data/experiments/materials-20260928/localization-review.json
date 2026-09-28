@@ -1,0 +1,35 @@
+{
+  "reviewer": "Codex visual inspection after inference; illustrative cases only, not exhaustive ground truth",
+  "cases": [
+    {
+      "model": "sitesense",
+      "image": "Screenshot_15.png",
+      "finding": "False class: flatbed truck labeled dump_truck, confidence 0.93."
+    },
+    {
+      "model": "sitesense",
+      "image": "Screenshot_62.png",
+      "finding": "Drilling rig labeled mobile_crane; class is outside the five-class presence score, so this error is invisible in that score."
+    },
+    {
+      "model": "sitesense",
+      "image": "Screenshot_99.png",
+      "finding": "Partly occluded concrete mixer missed; excavators and dump truck located."
+    },
+    {
+      "model": "grounding-dino",
+      "image": "Screenshot_99.png",
+      "finding": "concrete mixer truck box is on dump truck, not the visible mixer behind it. Image-level presence agreement counts a TP but localization is wrong."
+    },
+    {
+      "model": "grounding-materials",
+      "image": "Screenshot_6.png",
+      "finding": "rebar box is on crane; formwork box is on stored rebar cages. Image-level rebar agreement would be misleading."
+    },
+    {
+      "model": "grounding-materials",
+      "image": "Screenshot_12.png",
+      "finding": "steel pipe box is on excavator arm; brick wall box is on excavation/shoring."
+    }
+  ]
+}

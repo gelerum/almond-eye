@@ -1,0 +1,2 @@
+-r requirements.lock.txt
+ultralytics==8.4.113

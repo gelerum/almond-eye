@@ -1,0 +1,7 @@
+[
+  {"url":"https://www.kaggle.com/datasets/xyzyxzzxy/construction-equipment/data","checked_at":"2026-09-21","status":"metadata_not_readable","license":"unverified","used":false},
+  {"url":"https://www.kaggle.com/datasets/kartaviychert/arh-df?select=images","checked_at":"2026-09-21","status":"page_fetch_failed","license":"unverified","used":false},
+  {"url":"https://github.com/miniexcav/Construction-Machines-Images-Dataset","checked_at":"2026-09-21","status":"readme_reviewed","reported_images":223,"reported_classes":["excavator"],"annotation_format":"YOLO","license":"No explicit license verified; readme states Google Images origin","used":false,"limitations":"Does not establish coverage of all eight classes or permission for image redistribution."},
+  {"url":"https://www.kaggle.com/datasets/dataclusterlabs/construction-vehicle-images","checked_at":"2026-09-21","status":"metadata_not_readable","license":"unverified","used":false},
+  {"url":"https://universe.roboflow.com/jejung/construction-machinery-tbosw","checked_at":"2026-09-21","status":"overview_reviewed","reported_images":78,"reported_dataset_versions":0,"reported_models":0,"reported_class_count":24,"license":"CC BY 4.0 shown on overview","used":false,"limitations":"Class names require manual mapping; excavator-crane and generic crane do not prove support for excavator, loader crane, or mobile crane."}
+]

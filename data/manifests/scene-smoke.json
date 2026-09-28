@@ -1,0 +1,325 @@
+{
+  "check": "real CPU inference and API persistence; not an accuracy evaluation",
+  "ultralytics": "8.4.113",
+  "torch": "2.14.0+cpu",
+  "health": {
+    "api": "ready",
+    "database": "ready",
+    "detector": "ready",
+    "detector_error": null,
+    "worker": "synchronous",
+    "stage_classifier": "not_configured",
+    "stage_classifier_error": null,
+    "supported_classes": [],
+    "available_classes": [],
+    "model_classes": [
+      "Hardhat",
+      "Mask",
+      "NO-Hardhat",
+      "NO-Mask",
+      "NO-Safety Vest",
+      "Person",
+      "Safety Cone",
+      "Safety Vest",
+      "machinery",
+      "vehicle"
+    ],
+    "detector_profile": "construction-hazard",
+    "model_version": "ultralytics:3e796ca57f11cc5f18caeab994a4339ea7281a9c7a263cfe670b118d53e4d751",
+    "phase": "P0 foundation"
+  },
+  "results": [
+    {
+      "image": "Screenshot_1.png",
+      "sha256": "d29d78a09e276c7c2c30b9e2a0da21e0dda15f5d40912bf509b383afc1729a5f",
+      "seconds": 1.436,
+      "status": "insufficient_data",
+      "reason": "Детектор не проверен для всех обязательных классов",
+      "detections": [],
+      "scene": {
+        "version": "scene-v1",
+        "advisory": true,
+        "status": "observations",
+        "confidence_threshold": 0.5,
+        "frame_counts": {},
+        "zone_counts": {},
+        "weak_detections": 0,
+        "boundary_detections": 0,
+        "review_candidates": [],
+        "plan_context": {
+          "status": "active",
+          "date": "2026-09-21",
+          "active_works": [
+            {
+              "stage_id": "1",
+              "name": "Excavation",
+              "start_date": "2026-09-21",
+              "end_date": "2026-09-21"
+            }
+          ],
+          "reason": "Наличие объектов не подтверждает выполнение работ или соблюдение сроков",
+          "observed_activity": {}
+        },
+        "limitations": [
+          "Это количество рамок по классам, а не число уникальных людей или комплектов СИЗ. Классы нельзя суммировать как людей.",
+          "Отсутствие детекции не доказывает отсутствие объекта. Качество модели на целевой выборке не измерено.",
+          "СИЗ не сопоставлены конкретным людям. Сигналы требуют проверки; отсутствие каски не выводится из отсутствия рамки каски.",
+          "По одному кадру не определяются движение, расстояния в метрах, объём и процент выполнения работ."
+        ]
+      },
+      "classes_at_conf_0_25": {}
+    },
+    {
+      "image": "Screenshot_26.png",
+      "sha256": "9f208089c6e3e9d6576036bfd9eff91b5685ea4a1ec85837144a606ee96c447b",
+      "seconds": 0.087,
+      "status": "insufficient_data",
+      "reason": "Детектор не проверен для всех обязательных классов",
+      "detections": [
+        {
+          "confidence": 0.7314394116401672,
+          "bbox": [
+            0.6196645059186577,
+            0.02382780276470303,
+            0.8206795120552195,
+            0.6599365234375
+          ],
+          "label": "machinery"
+        },
+        {
+          "confidence": 0.7042992115020752,
+          "bbox": [
+            0.7182696798573369,
+            0.4870609259753494,
+            0.802253303809475,
+            0.7242931294885482
+          ],
+          "label": "Person"
+        },
+        {
+          "confidence": 0.7000097036361694,
+          "bbox": [
+            0.8458651510587571,
+            0.49341089473748057,
+            0.8973432733349569,
+            0.6857924562063277
+          ],
+          "label": "Person"
+        },
+        {
+          "confidence": 0.6416055560112,
+          "bbox": [
+            0.8540546770854697,
+            0.5191885811941964,
+            0.8909878061871924,
+            0.5904560349742818
+          ],
+          "label": "NO-Safety Vest"
+        },
+        {
+          "confidence": 0.5823293328285217,
+          "bbox": [
+            0.7308317564666222,
+            0.5216160365513393,
+            0.7824135233477748,
+            0.6237648531516886
+          ],
+          "label": "NO-Safety Vest"
+        },
+        {
+          "confidence": 0.40578246116638184,
+          "bbox": [
+            0.8554102684064807,
+            0.49821511973505433,
+            0.8742995226940627,
+            0.517272342658191
+          ],
+          "label": "NO-Hardhat"
+        }
+      ],
+      "scene": {
+        "version": "scene-v1",
+        "advisory": true,
+        "status": "observations",
+        "confidence_threshold": 0.5,
+        "frame_counts": {
+          "machinery": 1,
+          "Person": 2,
+          "NO-Safety Vest": 2
+        },
+        "zone_counts": {
+          "machinery": 1,
+          "Person": 2,
+          "NO-Safety Vest": 2
+        },
+        "weak_detections": 1,
+        "boundary_detections": 0,
+        "review_candidates": [
+          {
+            "type": "ppe_review",
+            "label": "NO-Safety Vest",
+            "message": "Возможное отсутствие сигнального жилета",
+            "detection_index": 3,
+            "confidence": 0.6416055560112,
+            "bbox": [
+              0.8540546770854697,
+              0.5191885811941964,
+              0.8909878061871924,
+              0.5904560349742818
+            ],
+            "zone_location": "inside",
+            "status": "needs_review"
+          },
+          {
+            "type": "ppe_review",
+            "label": "NO-Safety Vest",
+            "message": "Возможное отсутствие сигнального жилета",
+            "detection_index": 4,
+            "confidence": 0.5823293328285217,
+            "bbox": [
+              0.7308317564666222,
+              0.5216160365513393,
+              0.7824135233477748,
+              0.6237648531516886
+            ],
+            "zone_location": "inside",
+            "status": "needs_review"
+          }
+        ],
+        "plan_context": {
+          "status": "active",
+          "date": "2026-09-21",
+          "active_works": [
+            {
+              "stage_id": "1",
+              "name": "Excavation",
+              "start_date": "2026-09-21",
+              "end_date": "2026-09-21"
+            }
+          ],
+          "reason": "Наличие объектов не подтверждает выполнение работ или соблюдение сроков",
+          "observed_activity": {
+            "Person": 2,
+            "machinery": 1
+          }
+        },
+        "limitations": [
+          "Это количество рамок по классам, а не число уникальных людей или комплектов СИЗ. Классы нельзя суммировать как людей.",
+          "Отсутствие детекции не доказывает отсутствие объекта. Качество модели на целевой выборке не измерено.",
+          "СИЗ не сопоставлены конкретным людям. Сигналы требуют проверки; отсутствие каски не выводится из отсутствия рамки каски.",
+          "По одному кадру не определяются движение, расстояния в метрах, объём и процент выполнения работ."
+        ]
+      },
+      "classes_at_conf_0_25": {
+        "machinery": 1,
+        "Person": 2,
+        "NO-Safety Vest": 2,
+        "NO-Hardhat": 1
+      }
+    },
+    {
+      "image": "Screenshot_50.png",
+      "sha256": "e134ed10718499a4125d571eef8ef8e7b62e7a15daef26d42164150d0c531e01",
+      "seconds": 0.094,
+      "status": "insufficient_data",
+      "reason": "Детектор не проверен для всех обязательных классов",
+      "detections": [
+        {
+          "confidence": 0.49975067377090454,
+          "bbox": [
+            0.010471748930783762,
+            0.4730658679275039,
+            0.12732663361922555,
+            0.5565746236291731
+          ],
+          "label": "machinery"
+        },
+        {
+          "confidence": 0.37249961495399475,
+          "bbox": [
+            0.0002138495417682249,
+            0.0,
+            0.19519062730363956,
+            0.4686832025184394
+          ],
+          "label": "machinery"
+        },
+        {
+          "confidence": 0.29280605912208557,
+          "bbox": [
+            0.7148692707128816,
+            0.21409792692764945,
+            0.7429515969190853,
+            0.2393859294630726
+          ],
+          "label": "vehicle"
+        },
+        {
+          "confidence": 0.27660635113716125,
+          "bbox": [
+            0.721955390245577,
+            0.10758355182150135,
+            0.769343627590917,
+            0.1549121264345157
+          ],
+          "label": "vehicle"
+        },
+        {
+          "confidence": 0.2737128734588623,
+          "bbox": [
+            0.664885430066923,
+            0.36252786387567937,
+            0.7080676054976585,
+            0.4108504206497477
+          ],
+          "label": "vehicle"
+        },
+        {
+          "confidence": 0.2653101682662964,
+          "bbox": [
+            0.01117017288984357,
+            0.4854063804105202,
+            0.10292641836443397,
+            0.5544942725519216
+          ],
+          "label": "machinery"
+        }
+      ],
+      "scene": {
+        "version": "scene-v1",
+        "advisory": true,
+        "status": "observations",
+        "confidence_threshold": 0.5,
+        "frame_counts": {},
+        "zone_counts": {},
+        "weak_detections": 6,
+        "boundary_detections": 0,
+        "review_candidates": [],
+        "plan_context": {
+          "status": "active",
+          "date": "2026-09-21",
+          "active_works": [
+            {
+              "stage_id": "1",
+              "name": "Excavation",
+              "start_date": "2026-09-21",
+              "end_date": "2026-09-21"
+            }
+          ],
+          "reason": "Наличие объектов не подтверждает выполнение работ или соблюдение сроков",
+          "observed_activity": {}
+        },
+        "limitations": [
+          "Это количество рамок по классам, а не число уникальных людей или комплектов СИЗ. Классы нельзя суммировать как людей.",
+          "Отсутствие детекции не доказывает отсутствие объекта. Качество модели на целевой выборке не измерено.",
+          "СИЗ не сопоставлены конкретным людям. Сигналы требуют проверки; отсутствие каски не выводится из отсутствия рамки каски.",
+          "По одному кадру не определяются движение, расстояния в метрах, объём и процент выполнения работ."
+        ]
+      },
+      "classes_at_conf_0_25": {
+        "machinery": 3,
+        "vehicle": 3
+      }
+    }
+  ]
+}

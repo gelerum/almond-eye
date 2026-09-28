@@ -1,0 +1,22 @@
+[project]
+name = "construction-monitor"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = ["fastapi>=0.115,<1", "uvicorn>=0.30,<1", "sqlalchemy>=2.0,<3", "openpyxl>=3.1,<4", "pillow>=11,<13", "python-multipart>=0.0.20,<1", "tzdata>=2025.1"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10", "httpx>=0.28,<1"]
+postgres = ["psycopg[binary]>=3.2,<4"]
+detector = ["ultralytics>=8.3,<9"]
+dvc = ["dvc[s3]>=3.67.1"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["backend*"]

@@ -1,0 +1,776 @@
+{
+  "metric": "image-level presence agreement with AI visual reference; not mAP; not expert ground truth",
+  "reference_sha256": "92602f05516e1c2c7ce3d935f70546a092c962791e9333ecad6e2fa7f770ad48",
+  "post_inference_corrections": {
+    "reviewer": "Codex visual inspection after seeing model predictions; not independent expert adjudication",
+    "corrections": [
+      {
+        "image": "Строительная_техника/Screenshot_6.png",
+        "class": "dump_truck",
+        "before": false,
+        "after": true,
+        "reason": "Enlarged original background crop confirms a brown dump body and cab. Missed during initial review. Original frozen reference is preserved.",
+        "evidence": "runtime/experiments/materials-20260928/review-6-detail.png"
+      }
+    ]
+  },
+  "models": {
+    "hazard": {
+      "frames": 13,
+      "complete": true,
+      "median_seconds": 0.06910809999681078,
+      "total_inference_seconds": 4.583342099969741,
+      "peak_process_rss_gib": 0.402,
+      "per_class": {},
+      "corrected_per_class": {},
+      "disagreements": [],
+      "broad_equipment_presence_frames": 12,
+      "note": "All 13 selected frames have equipment. No broad-equipment negatives; specificity cannot be estimated. Specific equipment/material classes unsupported."
+    },
+    "sitesense": {
+      "frames": 13,
+      "complete": true,
+      "median_seconds": 0.3782278000144288,
+      "total_inference_seconds": 5.269727100036107,
+      "peak_process_rss_gib": 0.501,
+      "per_class": {
+        "excavator": {
+          "tp": 10,
+          "fp": 0,
+          "fn": 0,
+          "tn": 2,
+          "excluded": 1,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "dump_truck": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 0,
+          "tn": 10,
+          "excluded": 0,
+          "precision": 0.3333333333333333,
+          "recall": 1.0
+        },
+        "roller": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 12,
+          "excluded": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "tower_crane": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "tn": 9,
+          "excluded": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "concrete_mixer": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "tn": 12,
+          "excluded": 0,
+          "precision": null,
+          "recall": 0.0
+        }
+      },
+      "corrected_per_class": {
+        "excavator": {
+          "tp": 10,
+          "fp": 0,
+          "fn": 0,
+          "tn": 2,
+          "excluded": 1,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "dump_truck": {
+          "tp": 2,
+          "fp": 1,
+          "fn": 0,
+          "tn": 10,
+          "excluded": 0,
+          "precision": 0.6666666666666666,
+          "recall": 1.0
+        },
+        "roller": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "tn": 12,
+          "excluded": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "tower_crane": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "tn": 9,
+          "excluded": 0,
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "concrete_mixer": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "tn": 12,
+          "excluded": 0,
+          "precision": null,
+          "recall": 0.0
+        }
+      },
+      "disagreements": [
+        {
+          "image": "Строительная_техника/Screenshot_6.png",
+          "class": "dump_truck",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_15.png",
+          "class": "dump_truck",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_99.png",
+          "class": "concrete_mixer",
+          "reference": true,
+          "prediction": false
+        }
+      ],
+      "unmapped_labels": [
+        "mobile_crane"
+      ]
+    },
+    "grounding-dino": {
+      "frames": 13,
+      "complete": true,
+      "median_seconds": 5.488868799991906,
+      "total_inference_seconds": 78.23532100001466,
+      "peak_process_rss_gib": 1.544,
+      "per_class": {
+        "excavator": {
+          "tp": 9,
+          "fp": 1,
+          "fn": 1,
+          "tn": 1,
+          "excluded": 1,
+          "precision": 0.9,
+          "recall": 0.9
+        },
+        "dump_truck": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "tn": 12,
+          "excluded": 0,
+          "precision": null,
+          "recall": 0.0
+        },
+        "roller": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 1,
+          "tn": 11,
+          "excluded": 0,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "tower_crane": {
+          "tp": 3,
+          "fp": 7,
+          "fn": 1,
+          "tn": 2,
+          "excluded": 0,
+          "precision": 0.3,
+          "recall": 0.75
+        },
+        "concrete_mixer": {
+          "tp": 1,
+          "fp": 11,
+          "fn": 0,
+          "tn": 1,
+          "excluded": 0,
+          "precision": 0.08333333333333333,
+          "recall": 1.0
+        },
+        "rebar": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 4,
+          "tn": 7,
+          "excluded": 2,
+          "precision": null,
+          "recall": 0.0
+        },
+        "brick_wall": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 3,
+          "tn": 5,
+          "excluded": 2,
+          "precision": 0.3333333333333333,
+          "recall": 0.25
+        },
+        "steel_pipe": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 4,
+          "tn": 2,
+          "excluded": 3,
+          "precision": 0.75,
+          "recall": 0.42857142857142855
+        },
+        "formwork": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "tn": 10,
+          "excluded": 2,
+          "precision": null,
+          "recall": 0.0
+        }
+      },
+      "corrected_per_class": {
+        "excavator": {
+          "tp": 9,
+          "fp": 1,
+          "fn": 1,
+          "tn": 1,
+          "excluded": 1,
+          "precision": 0.9,
+          "recall": 0.9
+        },
+        "dump_truck": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 2,
+          "tn": 11,
+          "excluded": 0,
+          "precision": null,
+          "recall": 0.0
+        },
+        "roller": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 1,
+          "tn": 11,
+          "excluded": 0,
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "tower_crane": {
+          "tp": 3,
+          "fp": 7,
+          "fn": 1,
+          "tn": 2,
+          "excluded": 0,
+          "precision": 0.3,
+          "recall": 0.75
+        },
+        "concrete_mixer": {
+          "tp": 1,
+          "fp": 11,
+          "fn": 0,
+          "tn": 1,
+          "excluded": 0,
+          "precision": 0.08333333333333333,
+          "recall": 1.0
+        },
+        "rebar": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 4,
+          "tn": 7,
+          "excluded": 2,
+          "precision": null,
+          "recall": 0.0
+        },
+        "brick_wall": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 3,
+          "tn": 5,
+          "excluded": 2,
+          "precision": 0.3333333333333333,
+          "recall": 0.25
+        },
+        "steel_pipe": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 4,
+          "tn": 2,
+          "excluded": 3,
+          "precision": 0.75,
+          "recall": 0.42857142857142855
+        },
+        "formwork": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 1,
+          "tn": 10,
+          "excluded": 2,
+          "precision": null,
+          "recall": 0.0
+        }
+      },
+      "disagreements": [
+        {
+          "image": "Строительная_техника/Screenshot_1.png",
+          "class": "excavator",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_60.png",
+          "class": "excavator",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_99.png",
+          "class": "dump_truck",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_8.png",
+          "class": "roller",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_60.png",
+          "class": "roller",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_6.png",
+          "class": "tower_crane",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_8.png",
+          "class": "tower_crane",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_23.png",
+          "class": "tower_crane",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_62.png",
+          "class": "tower_crane",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_68.png",
+          "class": "tower_crane",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_72.png",
+          "class": "tower_crane",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_78.png",
+          "class": "tower_crane",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_99.png",
+          "class": "tower_crane",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_1.png",
+          "class": "concrete_mixer",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_6.png",
+          "class": "concrete_mixer",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_8.png",
+          "class": "concrete_mixer",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_12.png",
+          "class": "concrete_mixer",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_15.png",
+          "class": "concrete_mixer",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_60.png",
+          "class": "concrete_mixer",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_62.png",
+          "class": "concrete_mixer",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_68.png",
+          "class": "concrete_mixer",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_72.png",
+          "class": "concrete_mixer",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_78.png",
+          "class": "concrete_mixer",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_95.png",
+          "class": "concrete_mixer",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_6.png",
+          "class": "rebar",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_15.png",
+          "class": "rebar",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_95.png",
+          "class": "rebar",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_99.png",
+          "class": "rebar",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_1.png",
+          "class": "brick_wall",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_8.png",
+          "class": "brick_wall",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_68.png",
+          "class": "brick_wall",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_95.png",
+          "class": "brick_wall",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_99.png",
+          "class": "brick_wall",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_6.png",
+          "class": "steel_pipe",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_12.png",
+          "class": "steel_pipe",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_60.png",
+          "class": "steel_pipe",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_68.png",
+          "class": "steel_pipe",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_78.png",
+          "class": "steel_pipe",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_95.png",
+          "class": "formwork",
+          "reference": true,
+          "prediction": false
+        }
+      ],
+      "unmapped_labels": [
+        "excavator concrete mixer truck",
+        "excavator tower crane",
+        "tower"
+      ]
+    },
+    "grounding-materials": {
+      "frames": 13,
+      "complete": true,
+      "median_seconds": 5.541095499997027,
+      "total_inference_seconds": 134.53410439996514,
+      "peak_process_rss_gib": 1.495,
+      "per_class": {
+        "rebar": {
+          "tp": 1,
+          "fp": 5,
+          "fn": 3,
+          "tn": 2,
+          "excluded": 2,
+          "precision": 0.16666666666666666,
+          "recall": 0.25
+        },
+        "brick_wall": {
+          "tp": 3,
+          "fp": 5,
+          "fn": 1,
+          "tn": 2,
+          "excluded": 2,
+          "precision": 0.375,
+          "recall": 0.75
+        },
+        "steel_pipe": {
+          "tp": 4,
+          "fp": 1,
+          "fn": 3,
+          "tn": 2,
+          "excluded": 3,
+          "precision": 0.8,
+          "recall": 0.5714285714285714
+        },
+        "formwork": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 1,
+          "tn": 9,
+          "excluded": 2,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "corrected_per_class": {
+        "rebar": {
+          "tp": 1,
+          "fp": 5,
+          "fn": 3,
+          "tn": 2,
+          "excluded": 2,
+          "precision": 0.16666666666666666,
+          "recall": 0.25
+        },
+        "brick_wall": {
+          "tp": 3,
+          "fp": 5,
+          "fn": 1,
+          "tn": 2,
+          "excluded": 2,
+          "precision": 0.375,
+          "recall": 0.75
+        },
+        "steel_pipe": {
+          "tp": 4,
+          "fp": 1,
+          "fn": 3,
+          "tn": 2,
+          "excluded": 3,
+          "precision": 0.8,
+          "recall": 0.5714285714285714
+        },
+        "formwork": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 1,
+          "tn": 9,
+          "excluded": 2,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "disagreements": [
+        {
+          "image": "Строительная_техника/Screenshot_15.png",
+          "class": "rebar",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_23.png",
+          "class": "rebar",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_60.png",
+          "class": "rebar",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_62.png",
+          "class": "rebar",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_72.png",
+          "class": "rebar",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_78.png",
+          "class": "rebar",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_95.png",
+          "class": "rebar",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_99.png",
+          "class": "rebar",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_1.png",
+          "class": "brick_wall",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_8.png",
+          "class": "brick_wall",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_12.png",
+          "class": "brick_wall",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_15.png",
+          "class": "brick_wall",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_68.png",
+          "class": "brick_wall",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_72.png",
+          "class": "brick_wall",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_6.png",
+          "class": "steel_pipe",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_8.png",
+          "class": "steel_pipe",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_60.png",
+          "class": "steel_pipe",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_68.png",
+          "class": "steel_pipe",
+          "reference": true,
+          "prediction": false
+        },
+        {
+          "image": "Строительная_техника/Screenshot_6.png",
+          "class": "formwork",
+          "reference": false,
+          "prediction": true
+        },
+        {
+          "image": "Строительная_техника/Screenshot_95.png",
+          "class": "formwork",
+          "reference": true,
+          "prediction": false
+        }
+      ],
+      "study_note": "Exploratory material-only prompt after primary run, same images; not independent test",
+      "unmapped_labels": []
+    }
+  }
+}

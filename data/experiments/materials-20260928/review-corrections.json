@@ -1,0 +1,13 @@
+{
+  "reviewer": "Codex visual inspection after seeing model predictions; not independent expert adjudication",
+  "corrections": [
+    {
+      "image": "Строительная_техника/Screenshot_6.png",
+      "class": "dump_truck",
+      "before": false,
+      "after": true,
+      "reason": "Enlarged original background crop confirms a brown dump body and cab. Missed during initial review. Original frozen reference is preserved.",
+      "evidence": "runtime/experiments/materials-20260928/review-6-detail.png"
+    }
+  ]
+}

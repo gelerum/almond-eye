@@ -1,0 +1,54 @@
+{
+  "checked_at": "2026-09-21",
+  "equipment": {
+    "compatible_ready_model": null,
+    "candidates": [
+      {
+        "name": "G-Spy Construction Equipment Management Using Object Detection",
+        "url": "https://github.com/G-Spy/Construction-Equipment-Management-Using-Object-Detection",
+        "claimed_classes": ["excavator", "dump_truck", "concrete_mixer"],
+        "license": null,
+        "decision": "not_integrated",
+        "reason": "Notebook-only repository without a declared license or reproducible weight artifact."
+      },
+      {
+        "name": "Construction Hazard Detection",
+        "url": "https://github.com/yihong1120/Construction-Hazard-Detection",
+        "claimed_scope": "workers, PPE, machinery/vehicles and hazards",
+        "license": "AGPL-3.0",
+        "decision": "integrated_raw_detection_profile",
+        "reason": "User-requested integration: raw source classes are persisted and rendered, with no mapping of generic machinery/vehicle to specific equipment. Actual YOLO11n weights have 10 classes (no utility pole), unlike the 11-class repository description. Schedule conclusions remain unsupported.",
+        "weights_repo": "https://huggingface.co/yihong1120/Construction-Hazard-Detection",
+        "revision": "212ee245136b4e330f84b409f67f3d35eff59f42",
+        "weights": "models/yolo11/pt/yolo11n.pt",
+        "sha256": "f55600c106ba7952c64d2aec70dc673240b422bdbd989d395d301b0d5426b02b",
+        "smoke_report": "data/manifests/hazard-smoke.json"
+      }
+    ],
+    "project_adapter": "backend.app.services.detector.UltralyticsDetector"
+  },
+  "stages": {
+    "compatible_ready_model": null,
+    "candidates": [
+      {
+        "name": "asphalt construction stage recognition",
+        "url": "https://github.com/share2code99/asphalt_construction_stage_recognition",
+        "scope": "asphalt road construction phases",
+        "license": null,
+        "decision": "not_integrated",
+        "reason": "No declared license or downloadable reproducible weights; domain is narrower than this project."
+      },
+      {
+        "name": "Image-Based Construction Progress Analysis",
+        "url": "https://github.com/AmulyaSKumar/Image-Based-Construction-Progress-Analysis",
+        "scope": "multi-temporal image difference and SSIM",
+        "license": null,
+        "decision": "not_integrated",
+        "reason": "Change analysis prototype, not a stage classifier, and no declared license."
+      }
+    ],
+    "project_adapter": "backend.app.services.stage_recognition.UltralyticsStageClassifier",
+    "training_entrypoint": "scripts/train_stage_model.py"
+  },
+  "policy": "Do not use a model with unknown classes or license as evidence for a warning. Do not infer the active schedule stage from the same equipment detections being evaluated."
+}

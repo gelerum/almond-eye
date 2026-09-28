@@ -1,0 +1,236 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-28",
+  "annotator": "Codex visual inspection before inference; NOT human expert ground truth",
+  "purpose": "Exploratory image-level visible presence only, not object-level AP or schedule accuracy",
+  "selection": "Purposive diverse subset after reviewing contact sheets of all 100 images; not random or independent-site test",
+  "unknown_policy": "null excluded from score; false means not visually identified at review resolution, not proven physical absence",
+  "classes": [
+    "excavator",
+    "dump_truck",
+    "roller",
+    "tower_crane",
+    "concrete_mixer",
+    "rebar",
+    "brick_wall",
+    "steel_pipe",
+    "formwork"
+  ],
+  "fixed_thresholds": {
+    "sitesense": 0.25,
+    "hazard": 0.25,
+    "grounding_dino_box": 0.3,
+    "grounding_dino_text": 0.25
+  },
+  "grounding_dino_prompt": "excavator. dump truck. road roller. tower crane. concrete mixer truck. rebar. brick wall. steel pipe. formwork.",
+  "images": [
+    {
+      "image": "Строительная_техника/Screenshot_1.png",
+      "sha256": "d29d78a09e276c7c2c30b9e2a0da21e0dda15f5d40912bf509b383afc1729a5f",
+      "presence": {
+        "excavator": true,
+        "dump_truck": false,
+        "roller": false,
+        "tower_crane": false,
+        "concrete_mixer": false,
+        "rebar": false,
+        "brick_wall": true,
+        "steel_pipe": false,
+        "formwork": false
+      },
+      "note": "Small excavator at base of finished brick building; wrapped stacks not classified."
+    },
+    {
+      "image": "Строительная_техника/Screenshot_6.png",
+      "sha256": "f6bd42035b890043e8ee52f7b611ffe19857aa6a5829c691b38cc4831d98948e",
+      "presence": {
+        "excavator": false,
+        "dump_truck": false,
+        "roller": false,
+        "tower_crane": true,
+        "concrete_mixer": false,
+        "rebar": true,
+        "brick_wall": false,
+        "steel_pipe": true,
+        "formwork": false
+      },
+      "note": "Rebar cages stored in foreground; crawler crane is outside scored equipment classes; tower cranes in background."
+    },
+    {
+      "image": "Строительная_техника/Screenshot_8.png",
+      "sha256": "f23c0641430ab8caeac5dfebdeae3f0ef72fca3c3fe8ca4d35efbd7a0ea9859a",
+      "presence": {
+        "excavator": true,
+        "dump_truck": false,
+        "roller": false,
+        "tower_crane": false,
+        "concrete_mixer": false,
+        "rebar": false,
+        "brick_wall": false,
+        "steel_pipe": true,
+        "formwork": false
+      },
+      "note": "Partial excavator left; two drilling rigs are not excavators; loose steel casings."
+    },
+    {
+      "image": "Строительная_техника/Screenshot_12.png",
+      "sha256": "c4ad4e1056a2bae9bef299944e5409004f56d327c1e5ed434cfb1c77ac7c41b8",
+      "presence": {
+        "excavator": true,
+        "dump_truck": false,
+        "roller": false,
+        "tower_crane": true,
+        "concrete_mixer": false,
+        "rebar": null,
+        "brick_wall": false,
+        "steel_pipe": true,
+        "formwork": false
+      },
+      "note": "Several excavators, tower crane and horizontal pipe sections; fine rebar uncertain."
+    },
+    {
+      "image": "Строительная_техника/Screenshot_15.png",
+      "sha256": "64967cdccc0fcf76106d48c0c7896bfed718e10f81871d59091db2d45622d786",
+      "presence": {
+        "excavator": true,
+        "dump_truck": false,
+        "roller": false,
+        "tower_crane": true,
+        "concrete_mixer": false,
+        "rebar": true,
+        "brick_wall": false,
+        "steel_pipe": null,
+        "formwork": null
+      },
+      "note": "Flatbed truck is a deliberate negative for dump_truck; exposed rebar in debris and columns."
+    },
+    {
+      "image": "Строительная_техника/Screenshot_23.png",
+      "sha256": "f03313fd866605aed702c598c0fa534f385eb4db615fc1d4c93964b1ce90e81b",
+      "presence": {
+        "excavator": true,
+        "dump_truck": false,
+        "roller": false,
+        "tower_crane": false,
+        "concrete_mixer": false,
+        "rebar": false,
+        "brick_wall": true,
+        "steel_pipe": false,
+        "formwork": false
+      },
+      "note": "Clear excavator; existing brick building is not evidence of new masonry work."
+    },
+    {
+      "image": "Строительная_техника/Screenshot_60.png",
+      "sha256": "1abfb0b7143086f788589d861f684d59cbcc87527606817eee267264e3efd6ea",
+      "presence": {
+        "excavator": false,
+        "dump_truck": false,
+        "roller": true,
+        "tower_crane": false,
+        "concrete_mixer": false,
+        "rebar": false,
+        "brick_wall": null,
+        "steel_pipe": false,
+        "formwork": false
+      },
+      "note": "Road roller; distant facade material uncertain."
+    },
+    {
+      "image": "Строительная_техника/Screenshot_62.png",
+      "sha256": "f3bbbdfc611028ef444e77c318ba13f7e5e43fb6d90dcbe2cc71376d2f87339c",
+      "presence": {
+        "excavator": null,
+        "dump_truck": false,
+        "roller": false,
+        "tower_crane": false,
+        "concrete_mixer": false,
+        "rebar": false,
+        "brick_wall": null,
+        "steel_pipe": true,
+        "formwork": false
+      },
+      "note": "Backhoe loader excluded from excavator score; drilling rig not crane; steel pipe sections."
+    },
+    {
+      "image": "Строительная_техника/Screenshot_68.png",
+      "sha256": "53404b035ad1ae60e90d3cd7db20a3b0b3bfddedec5675fcd5c8e5fc91c0f8c3",
+      "presence": {
+        "excavator": true,
+        "dump_truck": false,
+        "roller": false,
+        "tower_crane": false,
+        "concrete_mixer": false,
+        "rebar": null,
+        "brick_wall": false,
+        "steel_pipe": true,
+        "formwork": false
+      },
+      "note": "Concrete pile stacks are not brick; thin foreground steel ambiguous."
+    },
+    {
+      "image": "Строительная_техника/Screenshot_72.png",
+      "sha256": "46620a017a351d240f5c1ba400dc7012a17958d2ee31c0f142c439de7e3c39a4",
+      "presence": {
+        "excavator": true,
+        "dump_truck": false,
+        "roller": false,
+        "tower_crane": false,
+        "concrete_mixer": false,
+        "rebar": false,
+        "brick_wall": false,
+        "steel_pipe": true,
+        "formwork": false
+      },
+      "note": "Installed pipe bracing in excavation; shoring not treated as concrete formwork."
+    },
+    {
+      "image": "Строительная_техника/Screenshot_78.png",
+      "sha256": "4d2d1a59795c5cf932b140c2a336dc29e8091e7a713564efd8d339e4deb15cd5",
+      "presence": {
+        "excavator": true,
+        "dump_truck": false,
+        "roller": false,
+        "tower_crane": false,
+        "concrete_mixer": false,
+        "rebar": false,
+        "brick_wall": false,
+        "steel_pipe": true,
+        "formwork": false
+      },
+      "note": "Excavator and pipe bracing; retaining shoring not formwork."
+    },
+    {
+      "image": "Строительная_техника/Screenshot_95.png",
+      "sha256": "99e533298093dc49ab390938d41dfa20f26f4dc9c53644009086292c7e63fe44",
+      "presence": {
+        "excavator": true,
+        "dump_truck": false,
+        "roller": false,
+        "tower_crane": true,
+        "concrete_mixer": false,
+        "rebar": true,
+        "brick_wall": true,
+        "steel_pipe": null,
+        "formwork": true
+      },
+      "note": "Installed rebar columns and concrete formwork; brick building in background."
+    },
+    {
+      "image": "Строительная_техника/Screenshot_99.png",
+      "sha256": "c4d2cede161a85e29bb81ff751a9cd2fbe108f07ed397dfe170eceec8085da46",
+      "presence": {
+        "excavator": true,
+        "dump_truck": true,
+        "roller": false,
+        "tower_crane": false,
+        "concrete_mixer": true,
+        "rebar": true,
+        "brick_wall": true,
+        "steel_pipe": null,
+        "formwork": null
+      },
+      "note": "Dump truck, excavators and partly occluded mixer; rebar cage foreground; panels uncertain."
+    }
+  ]
+}
